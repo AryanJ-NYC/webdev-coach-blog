@@ -28,14 +28,6 @@ module.exports = {
       },
     },
     {
-      resolve: `@wapps/gatsby-plugin-material-ui`,
-      options: {
-        theme: {
-          primaryColor: '#113643',
-        }
-      },
-    },
-    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
