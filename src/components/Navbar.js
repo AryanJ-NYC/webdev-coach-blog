@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import logo from '../img/logo.png'
 import { Typography } from '@material-ui/core';
 
@@ -54,9 +54,14 @@ const Navbar = ({ classes }) => (
         >
           The WebDev Coach
         </Typography>
-        <IconButton color="inherit" href="https://www.github.com/AryanJ-NYC" target="_blank">
-          <FontAwesomeIcon icon={faGithub} size="2x" />
-        </IconButton>
+        <div>
+          <IconButton color="inherit" href="https://www.github.com/AryanJ-NYC" target="_blank">
+            <FontAwesomeIcon icon={faGithub} size="2x" />
+          </IconButton>
+          <IconButton color="inherit" href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ" target="_blank">
+            <FontAwesomeIcon icon={faYoutube} size="2x" />
+          </IconButton>
+        </div>
       </Toolbar>
     </AppBar>
   </div>
