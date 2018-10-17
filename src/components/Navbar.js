@@ -11,10 +11,15 @@ import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import logo from '../img/logo.png'
 import { Typography } from '@material-ui/core';
 
-const styles = {
+const styles = (theme) => ({
   avatar: {
     height: 75,
     width: 75,
+  },
+  iconContainer: {
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '2rem'
+    }
   },
   img: {
     margin: 0,
@@ -24,6 +29,11 @@ const styles = {
     flexGrow: 1,
   },
   title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      textAlign: 'center',
+    },
     textDecoration: 'none',
   },
   toolbar: {
@@ -32,7 +42,7 @@ const styles = {
     paddingBottom: 10,
     paddingTop: 10,
   }
-};
+});
 
 const Navbar = ({ classes }) => (
   <div className={classes.root}>
@@ -55,11 +65,21 @@ const Navbar = ({ classes }) => (
           The WebDev Coach
         </Typography>
         <div>
-          <IconButton color="inherit" href="https://www.github.com/AryanJ-NYC" target="_blank">
-            <FontAwesomeIcon icon={faGithub} size="2x" />
+          <IconButton
+            className={classes.iconContainer}
+            color="inherit"
+            href="https://www.github.com/AryanJ-NYC"
+            target="_blank"
+          >
+            <FontAwesomeIcon icon={faGithub} size="lg" />
           </IconButton>
-          <IconButton color="inherit" href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ" target="_blank">
-            <FontAwesomeIcon icon={faYoutube} size="2x" />
+          <IconButton
+            className={classes.iconContainer}
+            color="inherit"
+            href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
+            target="_blank"
+          >
+            <FontAwesomeIcon icon={faYoutube} size="lg" />
           </IconButton>
         </div>
       </Toolbar>
