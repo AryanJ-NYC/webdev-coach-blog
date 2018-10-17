@@ -1,46 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import Grid from '@material-ui/core/Grid';
+import Card from '../components/Card';
 import Layout from '../components/Layout'
+import { withStyles } from '@material-ui/core';
 
-export default class IndexPage extends React.Component {
+const styles = {
+  root: {
+    marginTop: '2vh',
+  },
+};
+
+class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
+    const { classes, data } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
-          </div>
-        </section>
+        <Grid className={classes.root} container spacing={16} justify="center">
+          {posts.map(({ node: post }) => (
+            <Grid item xs={12} sm={10}>
+              <Card post={post} />
+            </Grid>
+          ))}
+        </Grid>
       </Layout>
     )
   }
@@ -53,6 +38,8 @@ IndexPage.propTypes = {
     }),
   }),
 }
+
+export default withStyles(styles)(IndexPage);
 
 export const pageQuery = graphql`
   query IndexQuery {
