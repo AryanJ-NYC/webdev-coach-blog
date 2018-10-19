@@ -18,7 +18,7 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section>
+    <article>
       {helmet || ''}
       <Grid spacing={16} justify="center" container>
         <Grid xs={11} item>
@@ -43,7 +43,7 @@ export const BlogPostTemplate = ({
           ) : null}
         </Grid>
       </Grid>
-    </section>
+    </article>
   )
 }
 
@@ -64,7 +64,7 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
+        helmet={<Helmet title={`${post.frontmatter.title} | The WebDev Coach`} />}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
