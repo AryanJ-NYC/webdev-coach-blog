@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { graphql, Link } from 'gatsby'
-import { Typography, Grid } from '@material-ui/core';
+import { Grid, List, ListItem, Typography, ListItemText } from '@material-ui/core';
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -26,19 +26,19 @@ export const BlogPostTemplate = ({
             {title}
           </Typography>
         </Grid>
-        <Grid xs={11} md={10} lg={9} justifyContent="center" item>
-          <Typography variant="p" gutterBottom>{description}</Typography>
+        <Grid xs={11} md={10} lg={9} item>
+          <Typography variant="body1" gutterBottom>{description}</Typography>
           <PostContent content={content} />
           {tags && tags.length ? (
             <div style={{ marginTop: `2rem` }}>
               <Typography variant="h5">Tags</Typography>
-              <ul className="taglist">
+              <List>
                 {tags.map(tag => (
-                  <li key={tag + `tag`}>
-                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                  </li>
+                  <ListItem button component={Link} to={`/tags/${kebabCase(tag)}/`} key={tag + `tag`}>
+                    <ListItemText color="secondary" primary={tag} />
+                  </ListItem>
                 ))}
-              </ul>
+              </List>
             </div>
           ) : null}
         </Grid>

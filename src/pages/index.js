@@ -13,7 +13,7 @@ class IndexPage extends React.Component {
       <Layout>
         <Grid spacing={16} justify="center" container>
           {posts.map(({ node: post }) => (
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={11} sm={10} key={post.id}>
               <Card post={post} />
             </Grid>
           ))}
