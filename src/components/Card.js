@@ -7,24 +7,37 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const CardComponent = ({ post }) => (
+const styles = {
+  titleLink: {
+    textDecoration: 'none',
+  }
+};
+
+const CardComponent = ({ classes, post }) => (
   <Card
     key={post.id}
   >
     <CardContent>
-      <Typography gutterBottom variant="h5" component="h2" color="secondary">
-        {post.frontmatter.title}
-      </Typography>
+      <Link className={classes.titleLink} to={post.fields.slug}>
+        <Typography
+          variant="h5"
+          component="h2"
+          color="secondary"
+          gutterBottom
+        >
+          {post.frontmatter.title}
+        </Typography>
+      </Link>
       <Typography component="p" color="textPrimary">
         {post.excerpt}
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small" component={Link} to={post.fields.slug} color="secondary">
+      <Button size="small" component={Link} to={post.fields.slug} color="secondary" disableRipple>
         Keep Reading →
       </Button>
     </CardActions>
   </Card>
 );
 
-export default withStyles()(CardComponent);
+export default withStyles(styles)(CardComponent);
