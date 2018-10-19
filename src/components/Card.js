@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby'
-import { withStyles } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -13,12 +12,10 @@ const styles = {
   }
 };
 
-const CardComponent = ({ classes, post }) => (
-  <Card
-    key={post.id}
-  >
+const CardComponent = ({ post }) => (
+  <Card>
     <CardContent>
-      <Link className={classes.titleLink} to={post.fields.slug}>
+      <Link style={styles.titleLink} to={post.fields.slug}>
         <Typography
           variant="h5"
           component="h2"
@@ -40,4 +37,4 @@ const CardComponent = ({ classes, post }) => (
   </Card>
 );
 
-export default withStyles(styles)(CardComponent);
+export default CardComponent;

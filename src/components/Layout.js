@@ -1,8 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import JssProvider from 'react-jss/lib/JssProvider'
+import { createGenerateClassName, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import theme from '../themes/default';
 import Navbar from '../components/Navbar'
+
+const generateClassName = createGenerateClassName({
+  dangerouslyUseGlobalCSS: true,
+  productionPrefix: 'c',
+});
 
 const styles = {
   root: {
@@ -11,11 +17,15 @@ const styles = {
 };
 
 const TemplateWrapper = ({ children, classes }) => (
-  <MuiThemeProvider theme={theme}>
+  <>
     <Helmet title="The WebDev Coach" />
-    <Navbar />
-    <div className={classes.root}>{children}</div>
-  </MuiThemeProvider>
+    <JssProvider generateClassName={generateClassName} classNamePrefix="">
+      <MuiThemeProvider theme={theme}>
+        <Navbar />
+        <div className={classes.root}>{children}</div>
+      </MuiThemeProvider>
+    </JssProvider>
+  </>
 );
 
 export default withStyles(styles)(TemplateWrapper);

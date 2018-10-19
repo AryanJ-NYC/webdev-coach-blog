@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import logo from '../img/logo.png'
-import { Typography } from '@material-ui/core';
 
 const styles = (theme) => ({
   avatar: {

@@ -3,7 +3,11 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { graphql, Link } from 'gatsby'
-import { Grid, List, ListItem, Typography, ListItemText } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Typography from '@material-ui/core/Typography';
+import ListItemText from '@material-ui/core/ListItemText';
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
