@@ -12,6 +12,9 @@ export default createMuiTheme({
     error: red,
   },
   typography: {
+    allVariants: {
+      letterSpacing: 0.75,
+    },
     useNextVariants: true,
   },
 });
