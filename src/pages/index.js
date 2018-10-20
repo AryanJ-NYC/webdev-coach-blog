@@ -2,23 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid';
+import withRoot from '../withRoot';
 import Card from '../components/Card';
-import Layout from '../components/Layout'
 
 class IndexPage extends React.Component {
   render() {
     const { data: { allMarkdownRemark: { edges: posts }}} = this.props
 
     return (
-      <Layout>
-        <Grid spacing={16} justify="center" container>
-          {posts.map(({ node: post }) => (
-            <Grid item xs={11} sm={10} key={post.id}>
-              <Card post={post} />
-            </Grid>
-          ))}
-        </Grid>
-      </Layout>
+      <Grid spacing={16} justify="center" container>
+        {posts.map(({ node: post }) => (
+          <Grid item xs={11} sm={10} key={post.id}>
+            <Card post={post} />
+          </Grid>
+        ))}
+      </Grid>
     )
   }
 }
@@ -31,7 +29,7 @@ IndexPage.propTypes = {
   }),
 }
 
-export default IndexPage;
+export default withRoot(IndexPage);
 
 export const pageQuery = graphql`
   query IndexQuery {

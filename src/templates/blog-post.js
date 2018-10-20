@@ -8,7 +8,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
-import Layout from '../components/Layout'
+import withRoot from '../withRoot';
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
@@ -63,16 +63,14 @@ const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <Layout>
-      <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        helmet={<Helmet title={`${post.frontmatter.title} | The WebDev Coach`} />}
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-      />
-    </Layout>
+    <BlogPostTemplate
+      content={post.html}
+      contentComponent={HTMLContent}
+      description={post.frontmatter.description}
+      helmet={<Helmet title={`${post.frontmatter.title} | The WebDev Coach`} />}
+      tags={post.frontmatter.tags}
+      title={post.frontmatter.title}
+    />
   )
 }
 
@@ -82,7 +80,7 @@ BlogPost.propTypes = {
   }),
 }
 
-export default BlogPost
+export default withRoot(BlogPost);
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
