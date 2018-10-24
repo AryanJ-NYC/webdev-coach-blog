@@ -2,10 +2,7 @@
 templateKey: blog-post
 title: Does FreeCodeCamp Prepare for a Career in Web Development?
 date: 2018-10-24T18:03:10.000Z
-description: >-
-  Trust FreeCodeCamp to prepare you for your future in web development. Keep at
-  it and, in due time, you'll be ready to make the jump to working as a
-  professional web developer.
+description: ' '
 tags:
   - freecodecamp
 ---
