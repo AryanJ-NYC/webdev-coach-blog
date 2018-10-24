@@ -1,33 +1,26 @@
 ---
-templateKey: 'blog-post'
-title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
-date: 2017-01-04T15:04:10.000Z
+templateKey: blog-post
+title: Does FreeCodeCamp Prepare for a Career in Web Development?
+date: 2018-10-24T18:03:10.000Z
 description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
+  Trust FreeCodeCamp to prepare you for your future in web development. Keep at
+  it and, in due time, you'll be ready to make the jump to working as a
+  professional web developer.
 tags:
-  - jamaica
-  - green beans
-  - flavor
-  - tasting
+  - freecodecamp
 ---
+Recently, I was asked by a Redditor (who will remain anonymous) if they are on the right path to becoming a web developer by using FreeCodeCamp. I would like to scream, at the top of my lungs, YES! FreeCodeCamp is an amazing resource and curriculum that encapsulates what is necessary to become a full-stack engineer in today's web development industry. Allow me to expand on this thought.
 
-We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.
+# Baby Steps
 
-Blue Mountain Peak is the highest mountain in Jamaica and one of the highest peaks in the Caribbean at 7,402 ft. It is the home of Blue Mountain coffee and their famous tours. It is located on the border of the Portland and Saint Thomas parishes of Jamaica.
+FreeCodeCamp starts off with the basic building blocks of any web application: HTML and CSS. It is here where new learners begin to build basic webpages. It is also here where new learners get frustrated with how "slowly" they're learning web development and how "boring" the HTML and CSS seem to be. However, you **must** crawl before you walk. I implore you to continue through the HTML and CSS, no matter how hard it may be to keep motivated.
 
-## A little history
+# Trying to Run
 
-The Blue Mountains are considered by many to be a hiker's and camper's paradise. The traditional Blue Mountain trek is a 7-mile hike to the peak and consists of a 3,000-foot increase in elevation. Jamaicans prefer to reach the peak at sunrise, thus the 3–4 hour hike is usually undertaken in darkness. Since the sky is usually very clear in the mornings, Cuba can be seen in the distance.
+After learning HTML and CSS, new learners are asked to create Responsive Web Design projects that _truly_ test their knowledge of HTML and CSS. This may be another point of frustration for many new developers. You may feel as if you gathered the puzzle pieces but haven't a clue where to start putting the puzzle together. My advice is to cut down the forest tree by tree instead of trying to cut the entire forest down all at once. Start by challenging yourself to render that image onto the screen. Next challenge is to center that image. After that is to render some text onto the screen. The challenges go on and on. Just take the project step-by-step!
 
->Some of the plants found on the Blue Mountain cannot be found anywhere else in the world and they are often of a dwarfed sort.
+FreeCodeCamp continues by teaching new developers JavaScript, React, Node and other new technologies. At each step, FreeCodeCamp challenges new developers to create projects. And **_THIS_** is where the magic of FreeCodeCamp lies. Projects are _THE_ single most important thing a developer can show their prospective employers. They are great talking points at interviews and (in my opinion) the place where web development are truly developed and honed.
 
-This is mainly due to the cold climate which inhibits growth. The small coffee farming communities of Claverty Cottage and Hagley Gap are located near the peak.
+Make _every_ FreeCodeCamp project you make to the best of your abilities. Do not stop at passing the included test cases. Instead, make a project that you'd be proud to show your friends, family and prospective employers. Ask for advice on the FreeCodeCamp [forum](https://www.freecodecamp.org/forum/) or [Gitter](https://gitter.im/FreeCodeCamp/home). With every project you complete, you are one step closer to your first web development job or client!
 
-## What you need to know before trying
-
-Jamaican Blue Mountain Coffee or Jamaica Blue Mountain Coffee is a classification of coffee grown in the Blue Mountains of Jamaica. The best lots of Blue Mountain coffee are noted for their mild flavor and lack of bitterness. Over the past few decades, this coffee has developed a reputation that has made it one of the most expensive and sought-after coffees in the world. Over 80% of all Jamaican Blue Mountain Coffee is exported to Japan. In addition to its use for brewed coffee, the beans are the flavor base of Tia Maria coffee liqueur.
-
-Jamaican Blue Mountain Coffee is a globally protected certification mark, meaning only coffee certified by the Coffee Industry Board of Jamaica can be labeled as such. It comes from a recognized growing region in the Blue Mountain region of Jamaica, and its cultivation is monitored by the Coffee Industry Board of Jamaica.
-
-The Blue Mountains are generally located between Kingston to the south and Port Antonio to the north. Rising 7,402 ft, they are some of the highest mountains in the Caribbean. The climate of the region is cool and misty with high rainfall. The soil is rich, with excellent drainage. This combination of climate and soil is considered ideal for coffee.
+Best of luck!
