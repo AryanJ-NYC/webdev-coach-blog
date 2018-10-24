@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet'
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from './getPageContext';
@@ -33,7 +34,7 @@ function withRoot(Component) {
             >
               <Navbar />
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-              {/* <CssBaseline /> */}
+              <CssBaseline />
               <div style={{ marginTop: '2vh'}}>
                 <Component {...this.props} />
               </div>
