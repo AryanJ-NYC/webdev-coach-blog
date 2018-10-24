@@ -2,7 +2,6 @@
 templateKey: blog-post
 title: Does FreeCodeCamp Prepare for a Career in Web Development?
 date: 2018-10-24T18:03:10.000Z
-description: ' '
 tags:
   - freecodecamp
 ---
