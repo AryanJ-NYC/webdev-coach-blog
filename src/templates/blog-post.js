@@ -10,29 +10,27 @@ import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
 import withRoot from '../withRoot';
 import Content, { HTMLContent } from '../components/Content'
+import { htmlToMaterialUiTypography } from '../utils/helpers';
 
 export const BlogPostTemplate = ({
   content,
   contentComponent,
-  description,
   tags,
   title,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-
   return (
     <article>
       {helmet || ''}
       <Grid spacing={16} justify="center" container>
         <Grid xs={11} item>
-          <Typography variant="h3" align="center">
+          <Typography color="secondary" variant="h3" align="center">
             {title}
           </Typography>
         </Grid>
         <Grid xs={11} md={10} lg={9} item>
-          <Typography variant="body1" gutterBottom>{description}</Typography>
-          <PostContent content={content} />
+          {htmlToMaterialUiTypography(content)}
           {tags && tags.length ? (
             <div style={{ marginTop: `2rem` }}>
               <Typography variant="h5">Tags</Typography>
