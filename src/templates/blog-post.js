@@ -14,24 +14,21 @@ import Content, { HTMLContent } from '../components/Content'
 export const BlogPostTemplate = ({
   content,
   contentComponent,
-  description,
   tags,
   title,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-
   return (
     <article>
       {helmet || ''}
       <Grid spacing={16} justify="center" container>
         <Grid xs={11} item>
-          <Typography variant="h3" align="center">
+          <Typography color="secondary" variant="h3" align="center">
             {title}
           </Typography>
         </Grid>
         <Grid xs={11} md={10} lg={9} item>
-          <Typography variant="body1" gutterBottom>{description}</Typography>
           <PostContent content={content} />
           {tags && tags.length ? (
             <div style={{ marginTop: `2rem` }}>
