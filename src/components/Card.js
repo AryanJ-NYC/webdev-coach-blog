@@ -30,10 +30,13 @@ const CardComponent = ({ classes, post }) => (
         {post.excerpt}
       </Typography>
     </CardContent>
-    <CardActions>
+    <CardActions style={{ justifyContent: 'space-between' }}>
       <Button size="small" component={Link} to={post.fields.slug} color="secondary" disableRipple>
         Keep Reading →
       </Button>
+      <Typography>
+        {post.frontmatter.date}
+      </Typography>
     </CardActions>
   </Card>
 );
