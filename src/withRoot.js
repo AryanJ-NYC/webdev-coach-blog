@@ -32,9 +32,9 @@ function withRoot(Component) {
               theme={this.muiPageContext.theme}
               sheetsManager={this.muiPageContext.sheetsManager}
             >
-              <Navbar />
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
+              <Navbar />
               <div style={{ marginTop: '2vh'}}>
                 <Component {...this.props} />
               </div>
