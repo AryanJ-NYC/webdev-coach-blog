@@ -15,7 +15,7 @@ export const htmlToMaterialUiTypography = content => {
     }
     if (attr.name === 'p') {
       return (
-        <Typography variant="body1" align="justify" gutterBottom>
+        <Typography variant="body1" gutterBottom>
           {htmlToMaterialUiTypography(attr.children)}
         </Typography>
       );
