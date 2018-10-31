@@ -23,7 +23,7 @@ export const BlogPostTemplate = ({
     <article>
       {helmet || ''}
       <Grid spacing={16} justify="center" container>
-        <Grid xs={11} item>
+        <Grid xs={12} sm={11} item>
           <Typography color="secondary" variant="h3" align="center">
             {title}
           </Typography>
