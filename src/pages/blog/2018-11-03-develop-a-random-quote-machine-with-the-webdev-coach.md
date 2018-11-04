@@ -36,3 +36,5 @@ Watch more [here](https://www.youtube.com/watch?v=lpba9vBqXl0).
 In the seventh and final video, I deploy the Random Quote Machine to [Netlify](https://www.netlify.com/).
 
 Watch more [here](https://www.youtube.com/watch?v=Jvp8j6zrFHE).
+
+I hope this helps in your coding journey. Please subscribe to the channel and comment / like the videos. Want me to cover something in a new video? Suggest it in a YouTube comment! Good luck!
