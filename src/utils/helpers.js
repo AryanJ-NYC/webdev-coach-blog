@@ -33,6 +33,11 @@ export const htmlToMaterialUiTypography = content => {
         </a>
       );
     }
+    if (attr.name === 'code') {
+      return (
+        <code>{htmlToMaterialUiTypography(attr.children)}</code>
+      );
+    }
     return null;
   })
 }
