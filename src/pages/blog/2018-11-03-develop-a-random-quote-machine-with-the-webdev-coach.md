@@ -48,8 +48,6 @@ Watch more [here](https://www.youtube.com/watch?v=lpba9vBqXl0).
 
 # Deploy Random Quote Machine to Netlify
 
-![netlify-logo](/img/netlify.png)
-
 In the seventh and final video, I deploy the Random Quote Machine to [Netlify](https://www.netlify.com/).
 
 Watch more [here](https://www.youtube.com/watch?v=Jvp8j6zrFHE).
