@@ -14,8 +14,9 @@ export const htmlToMaterialUiTypography = content => {
       )
     }
     if (attr.name === 'p') {
+      const hasImgChild = attr.children && attr.children[0].name === 'img';
       return (
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" align={hasImgChild ? 'center' : 'left'} gutterBottom>
           {htmlToMaterialUiTypography(attr.children)}
         </Typography>
       );
@@ -37,6 +38,9 @@ export const htmlToMaterialUiTypography = content => {
       return (
         <code>{htmlToMaterialUiTypography(attr.children)}</code>
       );
+    }
+    if (attr.name === 'img') {
+      return <img src={attr.attrs.src} alt={attr.attrs.alt} />;
     }
     return null;
   })
