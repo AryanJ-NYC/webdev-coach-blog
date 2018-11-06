@@ -54,4 +54,9 @@ In the seventh and final video, I deploy the Random Quote Machine to [Netlify](h
 
 Watch more [here](https://www.youtube.com/watch?v=Jvp8j6zrFHE).
 
+# Use React Hooks to Handle State
+In the eighth and final video, I have some fun and add React hooks to handle the state of our application. Keep in mind that, as of November 6, 2018, this is not a stable API and is done just for fun and experimentation.
+
+Watch more [here](https://www.youtube.com/watch?v=Jvp8j6zrFHE).
+
 I hope this helps in your coding journey. Please subscribe to the channel and comment / like the videos. Want me to cover something in a new video? Suggest it in a YouTube comment! Good luck!
