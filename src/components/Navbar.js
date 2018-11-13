@@ -36,6 +36,24 @@ const styles = theme => ({
       top: 0,
       bottom: 0,
     },
+    '&:after': {
+      height: '2px',
+      background: `${theme.palette.secondary.main}`,
+      content: '""',
+      width: '0',
+      position: 'absolute',
+      transform: 'translateX(-50%)',
+      transition: 'width 0.5s',
+      transitionTimingFunction: 'cubic-bezier(1, -0.65, 0, 2.31)',
+      left: '50%',
+      marginTop: '2rem',
+    },
+    '&:hover, &:focus': {
+      outline: 'none',
+      '&:after': {
+        width: 'calc(100% - 60px)',
+      },
+    },
   },
   socialMedia: {
     display: 'flex',
