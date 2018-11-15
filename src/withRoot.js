@@ -24,7 +24,10 @@ function withRoot(Component) {
     render() {
       return (
         <>
-          <Helmet title="The WebDev Coach" />
+          <Helmet>
+            <title>The WebDev Coach</title>
+            <meta name="google-site-verification" content="ZVCOkHtG1HJg4pJ-lgnRdDjcXfhChLNXFZ9YIWbomcs" />
+          </Helmet>
           <JssProvider generateClassName={this.muiPageContext.generateClassName}>
             {/* MuiThemeProvider makes the theme available down the React
                 tree thanks to React context. */}
