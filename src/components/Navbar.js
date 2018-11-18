@@ -76,7 +76,7 @@ const Navbar = ({ classes }) => (
           <IconButton
             className={classes.iconContainer}
             color="inherit"
-            href="https://twitter.com/thewebdevcoach"
+            href="https://twitter.com/aryanjabbari"
             target="_blank"
           >
             <FontAwesomeIcon icon={faTwitter} size="lg" />
