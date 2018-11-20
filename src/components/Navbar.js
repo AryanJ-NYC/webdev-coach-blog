@@ -1,102 +1,114 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'gatsby';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import logo from '../img/logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { withStyles, Typography } from '@material-ui/core';
 
-const styles = (theme) => ({
-  avatar: {
-    height: 75,
-    width: 75,
-  },
-  iconContainer: {
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '2rem'
-    }
-  },
-  img: {
-    margin: 0,
-  },
-  root: {
+const styles = theme => ({
+  container: {
+    borderTop: `1px ${theme.palette.secondary.main} solid`,
     display: 'flex',
-    flexGrow: 1,
+    justifyContent: 'flex-end',
   },
-  title: {
-    display: 'none',
+  linkContainer: {
+    display: 'flex',
+  },
+  link: {
+    height: '100%',
+    fontSize: '0.75rem',
+    padding: '1rem 1.2rem',
     [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-      textAlign: 'center',
+      fontSize: '1.2rem',
+      padding: '1rem 1.5rem',
     },
+    position: 'relative',
     textDecoration: 'none',
+    textTransform: 'uppercase',
+    '&:before': {
+      content: '""',
+      width: '1px',
+      background: `${theme.palette.secondary.main}`,
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      transform: 'skew(-20deg)',
+      top: 0,
+      bottom: 0,
+    },
+    '&:after': {
+      height: '2px',
+      background: `${theme.palette.secondary.main}`,
+      content: '""',
+      width: '0',
+      position: 'absolute',
+      transform: 'translateX(-50%)',
+      transition: 'width 0.5s',
+      transitionTimingFunction: 'cubic-bezier(1, -0.65, 0, 2.31)',
+      left: '50%',
+      marginTop: '2rem',
+    },
+    '&:hover, &:focus': {
+      outline: 'none',
+      '&:after': {
+        width: 'calc(100% - 60px)',
+      },
+    },
   },
-  toolbar: {
+  socialMedia: {
     display: 'flex',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
-    paddingTop: 10,
-  }
+    position: 'relative',
+    paddingLeft: '0.75rem',
+    '&:before': {
+      content: '""',
+      width: '1px',
+      background: `${theme.palette.secondary.main}`,
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      transform: 'skew(-20deg)',
+      top: 0,
+      bottom: 0,
+    },
+  },
 });
 
-const Navbar = ({ classes }) => (
-  <div className={classes.root}>
-    <AppBar position="static">
-      <Toolbar className={classes.toolbar}>
-        <Avatar
-          component={Link}
-          to="/"
-          src={logo}
-          className={classes.avatar}
-          classes={{ img: classes.img }}
-        />
-        <Typography
-          component={Link}
-          to="/"
+function Navbar({ classes }) {
+  return (
+    <div className={classes.container}>
+      <div></div>
+      <div className={[classes.linkContainer]}>
+        <Typography className={classes.link} component={Link} to="/" color="inherit">Blog</Typography>
+        <Typography className={classes.link} component={Link} to="/subscribe" color="inherit">Subscribe</Typography>
+      </div>
+      <div className={classes.socialMedia}>
+        <IconButton
+          className={classes.iconContainer}
           color="inherit"
-          variant="h3"
-          className={classes.title}
+          href="https://www.github.com/AryanJ-NYC"
+          target="_blank"
         >
-          The WebDev Coach
-        </Typography>
-        <div>
-          <IconButton
-            className={classes.iconContainer}
-            color="inherit"
-            href="https://www.github.com/AryanJ-NYC"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faGithub} size="lg" />
-          </IconButton>
-          <IconButton
-            className={classes.iconContainer}
-            color="inherit"
-            href="https://twitter.com/aryanjabbari"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faTwitter} size="lg" />
-          </IconButton>
-          <IconButton
-            className={classes.iconContainer}
-            color="inherit"
-            href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faYoutube} size="lg" />
-          </IconButton>
-        </div>
-      </Toolbar>
-    </AppBar>
-  </div>
-);
-
-Navbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+          <FontAwesomeIcon icon={faGithub} />
+        </IconButton>
+        <IconButton
+          className={classes.iconContainer}
+          color="inherit"
+          href="https://twitter.com/aryanjabbari"
+          target="_blank"
+        >
+          <FontAwesomeIcon icon={faTwitter} />
+        </IconButton>
+        <IconButton
+          className={classes.iconContainer}
+          color="inherit"
+          href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
+          target="_blank"
+        >
+          <FontAwesomeIcon icon={faYoutube} />
+        </IconButton>
+      </div>
+    </div>
+  );
+}
 
 export default withStyles(styles)(Navbar);

@@ -15,6 +15,7 @@ export default createMuiTheme({
     allVariants: {
       letterSpacing: 0.75,
     },
+    fontSize: 16,
     useNextVariants: true,
   },
 });
