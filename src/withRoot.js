@@ -5,6 +5,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from './getPageContext';
 import Header from './components/Header'
+import Page from './components/Page';
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
@@ -37,10 +38,9 @@ function withRoot(Component) {
             >
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
-              <Header />
-              <div style={{ marginTop: '2vh'}}>
+              <Page>
                 <Component {...this.props} />
-              </div>
+              </Page>
             </MuiThemeProvider>
           </JssProvider>
         </>
