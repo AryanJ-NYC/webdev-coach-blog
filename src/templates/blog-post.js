@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
 import withRoot from '../withRoot';
+import CallToAction from '../components/CallToAction';
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
@@ -30,6 +31,7 @@ export const BlogPostTemplate = ({
         </Grid>
         <Grid xs={11} md={10} lg={9} item>
           <PostContent content={content} />
+          <CallToAction />
           {tags && tags.length ? (
             <div style={{ marginTop: `2rem` }}>
               <Typography variant="h5">Tags</Typography>

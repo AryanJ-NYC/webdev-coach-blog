@@ -28,7 +28,7 @@ const styles = theme => ({
     '&:before': {
       content: '""',
       width: '1px',
-      background: `${theme.palette.secondary.main}`,
+      background: theme.palette.secondary.main,
       height: '100%',
       left: 0,
       position: 'absolute',
@@ -38,7 +38,7 @@ const styles = theme => ({
     },
     '&:after': {
       height: '2px',
-      background: `${theme.palette.secondary.main}`,
+      background: theme.palette.secondary.main,
       content: '""',
       width: '0',
       position: 'absolute',
@@ -62,7 +62,7 @@ const styles = theme => ({
     '&:before': {
       content: '""',
       width: '1px',
-      background: `${theme.palette.secondary.main}`,
+      background: theme.palette.secondary.main,
       height: '100%',
       left: 0,
       position: 'absolute',
@@ -78,8 +78,7 @@ function Navbar({ classes }) {
     <div className={classes.container}>
       <div></div>
       <div className={[classes.linkContainer]}>
-        <Typography className={classes.link} component={Link} to="/" color="inherit">Blog</Typography>
-        <Typography className={classes.link} component={Link} to="/subscribe" color="inherit">Subscribe</Typography>
+        <Typography className={classes.link} component={Link} to="/blog" color="inherit">Blog</Typography>
       </div>
       <div className={classes.socialMedia}>
         <IconButton

@@ -4,7 +4,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from './getPageContext';
-import Header from './components/Header'
 import Page from './components/Page';
 
 function withRoot(Component) {
