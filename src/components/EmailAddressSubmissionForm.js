@@ -1,6 +1,5 @@
-import React,{ Component } from 'react'
-import withRoot from '../withRoot';
-import { Grid, TextField, withStyles, Button, Typography } from '@material-ui/core';
+import React, { Component } from 'react';
+import { TextField, Button, Typography, withStyles } from '@material-ui/core';
 
 const styles = {
   button: {
@@ -16,7 +15,7 @@ const styles = {
   }
 };
 
-class subscribe extends Component {
+class EmailAddressSubmissionForm extends Component {
   state = {
     email: '',
     isValid: true,
@@ -59,35 +58,28 @@ class subscribe extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid justify="center" container>
-        <Grid xs={11} md={8} item>
-          If you like my content, subscribe to my newsletter. You will <em>not</em> receive new emails daily or even weekly.
-          I will only email with content and products that will get you closer to your goal of becoming a web developer.
-
-          <form className={classes.formContainer} onSubmit={this.handleSubmit}>
-            <div>
-              <TextField
-                className={classes.textField}
-                label="Email Address"
-                onChange={this.handleChange('email')}
-                margin="normal"
-                type="email"
-                onBlur={this.validate}
-                value={this.state.email}
-                autoFocus
-                error={!this.state.isValid}
-                required
-              />
-              <Button color="primary" className={classes.button} variant="contained" type="submit">
-                Submit
-              </Button>
-              {this.state.success && <Typography>Thank you for joining my mailing list!</Typography>}
-            </div>
-          </form>
-        </Grid>
-      </Grid>
+      <form className={classes.formContainer} onSubmit={this.handleSubmit}>
+        <div>
+          <TextField
+            className={classes.textField}
+            label="Email Address"
+            onChange={this.handleChange('email')}
+            margin="normal"
+            type="email"
+            onBlur={this.validate}
+            value={this.state.email}
+            autoFocus
+            error={!this.state.isValid}
+            required
+          />
+          <Button color="primary" className={classes.button} variant="contained" type="submit">
+            Submit
+          </Button>
+          {this.state.success && <Typography>Thank you for joining my mailing list!</Typography>}
+        </div>
+      </form>
     )
   }
 }
 
-export default withRoot(withStyles(styles)(subscribe));
+export default withStyles(styles)(EmailAddressSubmissionForm);
