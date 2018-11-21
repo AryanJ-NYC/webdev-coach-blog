@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid';
-import withRoot from '../withRoot';
-import Card from '../components/Card';
+import withRoot from '../../withRoot';
+import Card from '../../components/Card';
 
 class IndexPage extends React.Component {
   render() {

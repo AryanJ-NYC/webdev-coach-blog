@@ -78,7 +78,7 @@ function Navbar({ classes }) {
     <div className={classes.container}>
       <div></div>
       <div className={[classes.linkContainer]}>
-        <Typography className={classes.link} component={Link} to="/" color="inherit">Blog</Typography>
+        <Typography className={classes.link} component={Link} to="/blog" color="inherit">Blog</Typography>
         <Typography className={classes.link} component={Link} to="/subscribe" color="inherit">Subscribe</Typography>
       </div>
       <div className={classes.socialMedia}>
