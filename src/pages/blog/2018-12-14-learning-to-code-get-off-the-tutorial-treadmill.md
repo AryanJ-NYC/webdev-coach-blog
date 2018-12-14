@@ -17,25 +17,25 @@ Reading and watching code tutorials day after day in hopes of landing a position
 
 Practically none.  This is learned as you build _on your own_ (following video tutorials does not count). You need to fall and scrape your knee to learn exactly what it is to build a working application.
 
-## Find an Opponent
+# Find an Opponent
 You’ll need a project idea proportional to the knowledge you have. For instance, if you only know HTML and CSS, perhaps creating the next privacy-invading social media website is too worthy an opponent to fight. A more proportional opponent would be a [tribute page](https://learn.freecodecamp.org/responsive-web-design/responsive-web-design-projects/build-a-tribute-page) or a [product landing page](https://learn.freecodecamp.org/responsive-web-design/responsive-web-design-projects/build-a-product-landing-page).
 
 Optimally, the project will be something near and dear to your heart. You will be excited to enter the ring, round after round, to fight. However, if you need inspiration, check out [FreeCodeCamp](https://learn.freecodecamp.org/responsive-web-design/responsive-web-design-projects) for project ideas.
 
-## Jump into the Ring
+# Jump into the Ring
 It’s time to start the project. This, in itself, is intimidating enough. You need to find a text editor (try [Visual Studio Code](https://code.visualstudio.com/)), [initialize a git repository](https://git-scm.com/docs/git-init), install necessary libraries & packages, and more.  You need to create a development environment that you are comfortable using to create your projects. The first time is the most difficult _but_ you will be happy you learned this vital step. And this knowledge you will only gain by going through the pain of environment setup.
 
 Incoming shameless plug: I created a [YouTube video](https://www.youtube.com/watch?v=3QngsWA9IEE) in which I set up my development environment using [create-react-app](https://facebook.github.io/create-react-app/).
 
-## Never Stay Down
+# Never Stay Down
 While you build, you’ll be knocked down…a lot. You’ll go up against relentless bugs, incomprehensible errors and badly-written documentation. You’ll want to stay on the mat until the count of 10 but you can never stay down. Luckily for you, this fight can continue as long as you need to win. As long as you work on your project every day, you’ll wear your opponent down and finish that project. Additionally, you have help along the way. [Twitter](https://twitter.com/aryanjabbari), [/r/webdev,](https://reddit.com/r/webdev) [/r/freecodecamp](https://www.reddit.com/r/freecodecamp) and the [FreeCodeCamp forums](https://www.freecodecamp.org/forum/) all have amazing communities that are more than willing to help you as you bring this project home. Utilize those communities.
 
 Incoming shameless plug: If you have a question about web development, please feel free to tweet me at [@AryanJabbari](https://twitter.com/aryanjabbari). I tweet often and am happy to help.
 
-## Climb the Ranks
+# Climb the Ranks
 Congratulations! You won your first fight. You created a responsive web application in HTML and CSS. You brought in help from [Bootstrap](https://getbootstrap.com/) or [Bulma](https://bulma.io/). But it’s time to train for your next fight. It’s time to hit the speed bag and run the tutorial treadmill. You need to get ready for your next fight: JavaScript. You need to watch tapes on JavaScript and learn do exercises. And, when you’re ready, you need to climb in that ring again.
 
-## Never Stop Fighting
+# Never Stop Fighting
 There are always be projects to build and frameworks to learn. Keep your skills sharp by alternating training (watching tutorials) and fighting (creating projects). Your career is bound to take off.
 
 Good luck!
