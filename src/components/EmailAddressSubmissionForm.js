@@ -68,7 +68,6 @@ class EmailAddressSubmissionForm extends Component {
             type="email"
             onBlur={this.validate}
             value={this.state.email}
-            autoFocus
             error={!this.state.isValid}
             required
           />
