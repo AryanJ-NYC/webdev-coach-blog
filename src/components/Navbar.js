@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faMedium, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { withStyles, Typography } from '@material-ui/core';
 
 const styles = theme => ({
@@ -104,6 +104,14 @@ function Navbar({ classes }) {
           target="_blank"
         >
           <FontAwesomeIcon icon={faYoutube} />
+        </IconButton>
+        <IconButton
+          className={classes.iconContainer}
+          color="inherit"
+          href="https://medium.com/@aryanjabbari"
+          target="_blank"
+        >
+          <FontAwesomeIcon icon={faMedium} />
         </IconButton>
       </div>
     </div>
