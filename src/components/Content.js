@@ -1,9 +1,12 @@
+import { AllHtmlEntities as Entities } from 'html-entities';
 import React from 'react'
 import PropTypes from 'prop-types'
 import { htmlToMaterialUiTypography } from '../utils/helpers';
 
 export const HTMLContent = ({ content, className }) => (
-  <div className={className}>{htmlToMaterialUiTypography(content)}</div>
+  <div className={className}>
+    {htmlToMaterialUiTypography(new Entities().decode(content))}
+  </div>
 )
 
 const Content = ({ content, className }) => (
