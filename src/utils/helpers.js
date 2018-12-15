@@ -1,47 +1,83 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import HTML from 'html-parse-stringify';
+import tokenize from 'hyntax/lib/tokenize'
+import constructTree from 'hyntax/lib/construct-tree'
 
 export const htmlToMaterialUiTypography = content => {
-  const html = typeof content === 'string' ? HTML.parse(content) : content;
-  console.log(html);
-  return Object.values(html).map(attr => {
-    if (attr.type === 'text') {
-      return attr.content;
+  const html = typeof content === 'string' ? constructTree(tokenize(content).tokens).ast.content : content;
+
+  const children = html.children || html;
+  return Object.values(children).map(attr => {
+    const { content, nodeType } = attr;
+    const { children, name: contentName, value } = content;
+    const props = attr.content.attributes ? attr.content.attributes.reduce((prev, curr) => {
+      if (curr.key.content === 'class') {
+        prev.className = curr.value.content;
+      } else {
+        prev[curr.key.content] = curr.value.content;
+      }
+      return prev;
+    }, {}) : {};
+
+    if (nodeType === 'text') {
+      return value.content;
     }
-    if (attr.name === 'h1') {
+    if (contentName === 'div') {
       return (
-        <Typography variant="h4" color="secondary" gutterBottom>{attr.children[0].content}</Typography>
+        <div {...props}>{htmlToMaterialUiTypography(children)}</div>
+      );
+    }
+    if (contentName === 'pre') {
+      return (
+        <pre {...props}>{htmlToMaterialUiTypography(children)}</pre>
+      );
+    }
+    if (contentName === 'h1') {
+      return (
+        <Typography variant="h4" color="secondary" gutterBottom>{htmlToMaterialUiTypography(children)}</Typography>
       )
     }
-    if (attr.name === 'p') {
+    if (contentName === 'p') {
       const hasImgChild = attr.children && attr.children[0].name === 'img';
       return (
         <Typography variant="body1" align={hasImgChild ? 'center' : 'left'} gutterBottom>
-          {htmlToMaterialUiTypography(attr.children)}
+          {htmlToMaterialUiTypography(children)}
         </Typography>
       );
     }
-    if (attr.name === 'strong') {
-      return <strong>{htmlToMaterialUiTypography(attr.children)}</strong>
+    if (contentName === 'strong') {
+      return <strong>{htmlToMaterialUiTypography(children)}</strong>
     }
-    if (attr.name === 'em') {
-      return <em>{htmlToMaterialUiTypography(attr.children)}</em>
+    if (contentName === 'em') {
+      return <em>{htmlToMaterialUiTypography(children)}</em>
     }
-    if (attr.name === 'a') {
+    if (contentName === 'a') {
       return (
-        <a href={attr.attrs.href} target="_blank" rel="noopener noreferrer">
-          {htmlToMaterialUiTypography(attr.children)}
+        <a {...props} target="_blank" rel="noopener noreferrer">
+          {htmlToMaterialUiTypography(children)}
         </a>
       );
     }
-    if (attr.name === 'code') {
+    if (contentName === 'code') {
       return (
-        <code>{htmlToMaterialUiTypography(attr.children)}</code>
+        <code {...props}>{htmlToMaterialUiTypography(children)}</code>
       );
     }
-    if (attr.name === 'img') {
-      return <img src={attr.attrs.src} alt={attr.attrs.alt} />;
+    if (contentName === 'span') {
+      const props = attr.content.attributes.reduce((prev, curr) => {
+        if (curr.key.content === 'class') {
+          prev.className = curr.value.content;
+        } else {
+          prev[curr.key.content] = curr.value.content;
+        }
+        return prev;
+      }, {});
+      return (
+        <span {...props}>{htmlToMaterialUiTypography(children)}</span>
+      );
+    }
+    if (contentName === 'img') {
+      return <img {...props} />;
     }
     return null;
   })
