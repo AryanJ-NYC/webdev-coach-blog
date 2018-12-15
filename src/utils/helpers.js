@@ -4,6 +4,7 @@ import HTML from 'html-parse-stringify';
 
 export const htmlToMaterialUiTypography = content => {
   const html = typeof content === 'string' ? HTML.parse(content) : content;
+  console.log(html);
   return Object.values(html).map(attr => {
     if (attr.type === 'text') {
       return attr.content;
