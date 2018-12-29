@@ -3,9 +3,8 @@ import withRoot from '../withRoot';
 import { withStyles, Grid, Typography } from '@material-ui/core';
 import CallToAction from '../components/CallToAction';
 
-const styles = theme => ({
+const styles = () => ({
   rootContainer: {
-    backgroundColor: theme.palette.secondary.light,
     height: 'max-content',
     marginTop: '-2vh'
   }
@@ -33,7 +32,7 @@ function IndexPage({ classes }) {
           create courses, workshops, and tutorials in an effort to get you in the industry.
         </Typography>
       </Grid>
-        <CallToAction />
+      <CallToAction />
     </Grid>
   )
 }
