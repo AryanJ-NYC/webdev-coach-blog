@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { TextField, Button, Typography, withStyles } from '@material-ui/core';
 
 const styles = {
-  button: {
-    height: 'min-content',
-  },
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: 'min-content'
+    width: 'min-content',
   },
   textField: {
     width: 200,
-  }
+  },
 };
 
 class EmailAddressSubmissionForm extends Component {
@@ -20,7 +17,7 @@ class EmailAddressSubmissionForm extends Component {
     email: '',
     isValid: true,
     success: false,
-  }
+  };
 
   handleChange = name => event => {
     this.setState({
@@ -31,14 +28,18 @@ class EmailAddressSubmissionForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const emails = [{ email: this.state.email }];
-    const response  = await fetch('https://api.sendgrid.com/v3/contactdb/recipients', {
-      body: JSON.stringify(emails),
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Authorization: 'Bearer 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',
-      },
-      method: 'post',
-    });
+    const response = await fetch(
+      'https://api.sendgrid.com/v3/contactdb/recipients',
+      {
+        body: JSON.stringify(emails),
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization:
+            'Bearer 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',
+        },
+        method: 'post',
+      }
+    );
     const body = await response.json();
     if (body.error_count) {
       this.setState({ isValid: false });
@@ -46,14 +47,14 @@ class EmailAddressSubmissionForm extends Component {
       this.setState({ email: '', success: true });
       setTimeout(() => this.setState({ success: false }), 4000);
     }
-  }
+  };
 
   validate = event => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.setState({
       isValid: re.test(String(event.target.value).toLowerCase()),
     });
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -71,13 +72,20 @@ class EmailAddressSubmissionForm extends Component {
             error={!this.state.isValid}
             required
           />
-          <Button color="primary" className={classes.button} variant="contained" type="submit">
+          <Button
+            color="primary"
+            className={classes.button}
+            variant="contained"
+            type="submit"
+          >
             Submit
           </Button>
-          {this.state.success && <Typography>Thank you for joining my mailing list!</Typography>}
+          {this.state.success && (
+            <Typography>Thank you for joining my mailing list!</Typography>
+          )}
         </div>
       </form>
-    )
+    );
   }
 }
 
