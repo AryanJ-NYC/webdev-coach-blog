@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faMedium, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { withStyles, Typography } from '@material-ui/core';
@@ -76,9 +77,11 @@ const styles = theme => ({
 function Navbar({ classes }) {
   return (
     <div className={classes.container}>
-      <div></div>
+      <div />
       <div className={[classes.linkContainer]}>
-        <Typography className={classes.link} component={Link} to="/blog" color="inherit">Blog</Typography>
+        <Typography className={classes.link} component={Link} to="/blog" color="inherit">
+          Blog
+        </Typography>
       </div>
       <div className={classes.socialMedia}>
         <IconButton
@@ -87,7 +90,9 @@ function Navbar({ classes }) {
           href="https://www.github.com/AryanJ-NYC"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faGithub} />
+          <SvgIcon>
+            <FontAwesomeIcon icon={faGithub} />
+          </SvgIcon>
         </IconButton>
         <IconButton
           className={classes.iconContainer}
@@ -95,7 +100,9 @@ function Navbar({ classes }) {
           href="https://twitter.com/aryanjabbari"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faTwitter} />
+          <SvgIcon>
+            <FontAwesomeIcon icon={faTwitter} />
+          </SvgIcon>
         </IconButton>
         <IconButton
           className={classes.iconContainer}
@@ -103,7 +110,9 @@ function Navbar({ classes }) {
           href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faYoutube} />
+          <SvgIcon>
+            <FontAwesomeIcon icon={faYoutube} />
+          </SvgIcon>
         </IconButton>
         <IconButton
           className={classes.iconContainer}
@@ -111,7 +120,9 @@ function Navbar({ classes }) {
           href="https://medium.com/@aryanjabbari"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faMedium} />
+          <SvgIcon>
+            <FontAwesomeIcon icon={faMedium} />
+          </SvgIcon>
         </IconButton>
       </div>
     </div>
