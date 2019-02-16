@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faMedium, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faMedium, faTwitch, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { withStyles, Typography } from '@material-ui/core';
 
 const styles = theme => ({
@@ -112,6 +112,16 @@ function Navbar({ classes }) {
         >
           <SvgIcon>
             <FontAwesomeIcon icon={faYoutube} />
+          </SvgIcon>
+        </IconButton>
+        <IconButton
+          className={classes.iconContainer}
+          color="inherit"
+          href="https://www.twitch.tv/aryanjabbari"
+          target="_blank"
+        >
+          <SvgIcon>
+            <FontAwesomeIcon icon={faTwitch} />
           </SvgIcon>
         </IconButton>
         <IconButton
