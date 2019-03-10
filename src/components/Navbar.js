@@ -9,33 +9,36 @@ import { withStyles, Typography } from '@material-ui/core';
 const styles = theme => ({
   container: {
     borderTop: `1px ${theme.palette.secondary.main} solid`,
-    display: 'flex',
-    justifyContent: 'flex-end',
+    display: 'grid',
+    [theme.breakpoints.up('sm')]: {
+      gridTemplateColumns: 'auto auto',
+      justifyContent: 'flex-end',
+    },
   },
   linkContainer: {
     display: 'flex',
+    justifyContent: 'space-around',
   },
   link: {
     height: '100%',
-    fontSize: '0.75rem',
     padding: '1rem 1.2rem',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '1.2rem',
-      padding: '1rem 1.5rem',
-    },
     position: 'relative',
     textDecoration: 'none',
     textTransform: 'uppercase',
-    '&:before': {
-      content: '""',
-      width: '1px',
-      background: theme.palette.secondary.main,
-      height: '100%',
-      left: 0,
-      position: 'absolute',
-      transform: 'skew(-20deg)',
-      top: 0,
-      bottom: 0,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.2rem',
+      padding: '1rem 1.5rem',
+      '&:before': {
+        content: '""',
+        width: '1px',
+        background: theme.palette.secondary.main,
+        height: '100%',
+        left: 0,
+        position: 'absolute',
+        transform: 'skew(-20deg)',
+        top: 0,
+        bottom: 0,
+      },
     },
     '&:after': {
       height: '2px',
@@ -60,16 +63,19 @@ const styles = theme => ({
     display: 'flex',
     position: 'relative',
     paddingLeft: '0.75rem',
-    '&:before': {
-      content: '""',
-      width: '1px',
-      background: theme.palette.secondary.main,
-      height: '100%',
-      left: 0,
-      position: 'absolute',
-      transform: 'skew(-20deg)',
-      top: 0,
-      bottom: 0,
+    justifyContent: 'space-around',
+    [theme.breakpoints.up('sm')]: {
+      '&:before': {
+        content: '""',
+        width: '1px',
+        background: theme.palette.secondary.main,
+        height: '100%',
+        left: 0,
+        position: 'absolute',
+        transform: 'skew(-20deg)',
+        top: 0,
+        bottom: 0,
+      },
     },
   },
 });
@@ -77,10 +83,12 @@ const styles = theme => ({
 function Navbar({ classes }) {
   return (
     <div className={classes.container}>
-      <div />
       <div className={[classes.linkContainer]}>
         <Typography className={classes.link} component={Link} to="/blog" color="inherit">
           Blog
+        </Typography>
+        <Typography className={classes.link} component={Link} to="/ask-a-question" color="inherit">
+          Ask A Question
         </Typography>
       </div>
       <div className={classes.socialMedia}>
