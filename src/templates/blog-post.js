@@ -1,8 +1,8 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import { graphql, Link } from 'gatsby'
+import React from 'react';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+import { kebabCase } from 'lodash';
+import { graphql, Link } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,16 +10,10 @@ import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
 import withRoot from '../withRoot';
 import CallToAction from '../components/CallToAction';
-import Content, { HTMLContent } from '../components/Content'
+import Content, { HTMLContent } from '../components/Content';
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
+export const BlogPostTemplate = ({ content, contentComponent, tags, title, helmet }) => {
+  const PostContent = contentComponent || Content;
   return (
     <article>
       {helmet || ''}
@@ -47,8 +41,8 @@ export const BlogPostTemplate = ({
         </Grid>
       </Grid>
     </article>
-  )
-}
+  );
+};
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
@@ -56,10 +50,10 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.instanceOf(Helmet),
-}
+};
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post } = data;
 
   return (
     <BlogPostTemplate
@@ -70,14 +64,14 @@ const BlogPost = ({ data }) => {
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
     />
-  )
-}
+  );
+};
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
-}
+};
 
 export default withRoot(BlogPost);
 
@@ -93,4 +87,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
