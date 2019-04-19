@@ -28,6 +28,13 @@ module.exports = {
           {
             resolve: 'gatsby-remark-prismjs',
           },
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'nofollow',
+            },
+          },
         ],
       },
     },
@@ -35,12 +42,9 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: [
-            'Roboto',
-            'Material Icons',
-          ]
-        }
-      }
+          families: ['Roboto', 'Material Icons'],
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-typography`,
@@ -69,4 +73,4 @@ module.exports = {
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};
