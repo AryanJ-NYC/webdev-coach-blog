@@ -5,7 +5,7 @@ date: 2019-04-19T16:46:49.471Z
 tags:
   - system design
 ---
-I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw)'s video on [System Design: Designing Tinder](https://www.youtube.com/watch?v=tndzLznxq40).
+I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipeef7iFsKw)'s video on [System Design: Designing Tinder](https://www.youtube.com/watch?v=tndzLznxq40). Below are notes that I took while watching the video. Instead of keeping them for myself, I thought I'd share them. Please contact me on [Twitter](https://twitter.com/AryanJabbari) with any suggestions.
 
 # Specs
 
