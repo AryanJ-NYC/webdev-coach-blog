@@ -27,7 +27,6 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "html-entities": "^1.2.1",
     "html-parse-stringify": "^1.0.3",
-    "hyntax": "^1.0.10",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
     "netlify-cms": "^2.9.1",
