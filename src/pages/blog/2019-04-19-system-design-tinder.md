@@ -20,18 +20,18 @@ I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipe
 
 * We can store images as a file or as a blob (binary large object)
   * If stored as BLOB in database:
-    * 🚫 mutability - allows for changes to be made to images
-      * but why would we want that? We wouldn't be mutating a few bits of the image
-    * 🚫 transaction guarantees
-      * However, we will not update often so there is no need for [atomicity](https://en.wikipedia.org/wiki/Atomicity_(database_systems))
-    * 🚫 indices - improves search
-      * but this would search the content of the BLOB (bits) - pretty useless
-    * 🚫 Access control - we may be able to set up a file system that gives us equal access control
+      * 🚫 mutability - allows for changes to be made to images
+          * but why would we want that? We wouldn't be mutating a few bits of the image
+      * 🚫 transaction guarantees
+          * However, we will not update often so there is no need for [atomicity](https://en.wikipedia.org/wiki/Atomicity_(database_systems))
+      * 🚫 indices - improves search
+          * but this would search the content of the BLOB (bits) - pretty useless
+      * 🚫 Access control - we may be able to set up a file system that gives us equal access control
   * If stored as a file:
-    * ✅ less expensive
-    * ✅ faster - large objects are stored separately
-    * ✅ we can use a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) for fast access
-    * Our database will be a table with three columns: _imageId_, _profileId_, _fileUrl_
+      * ✅ less expensive
+      * ✅ faster - large objects are stored separately
+      * ✅ we can use a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) for fast access
+      * Our database will be a table with three columns: _imageId_, _profileId_, _fileUrl_
 
 ## Profile Service
 
@@ -43,7 +43,7 @@ I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipe
   * therefore, we'll need to use a [gateway](https://microservices.io/patterns/apigateway.html) (a single entry point for all clients) service instead
 * ❓ Stores images
   * there are arguments to be made for images to be its own service:
-    * In the future, what if we _only_ need Tinder's images (perhaps machine learning?)
+      * In the future, what if we _only_ need Tinder's images (perhaps machine learning?)?
 
 ## Gateway Service
 
@@ -67,14 +67,14 @@ I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipe
 * Recommendations service finds and serves _user_s that match the profile of another _user_.
 * Should we store those relationships bidirectionally or unidirectionally?
   * Bidirectional
-    * ✅ simpler queries
-    * 🚫 data can be corrupted easily by mistakenly adding unidirectional relationship
-    * ✅ when compared with bidirectional, no additional checks to ensure match is not duplicated
+      * ✅ simpler queries
+      * 🚫 data can be corrupted easily by mistakenly adding unidirectional relationship
+      * ✅ when compared with bidirectional, no additional checks to ensure match is not duplicated
   * Unidirectional
-    * 🚫 more complicated queries
-    * ✅ data will not be corrupted by forgetting to store other direction (there is no other direction!)
-    * 🚫 requires a check that _userId_ < _friendId_ so that no duplicate data is stored (a composite key of _userId_ and _friendId_ fixes this problem right up!)
-  * More information [here](https://stackoverflow.com/questions/10807900/how-to-store-bidirectional-relationships-in-a-rdbms-like-mysql)
+      * 🚫 more complicated queries
+      * ✅ data will not be corrupted by forgetting to store other direction (there is no other direction!)
+      * 🚫 requires a check that _userId_ < _friendId_ so that no duplicate data is stored (a composite key of _userId_ and _friendId_ fixes this problem right up!)
+  * More information about unidirectional vs. bidirectional relationships [here](https://stackoverflow.com/questions/10807900/how-to-store-bidirectional-relationships-in-a-rdbms-like-mysql)
 
 # Matches Service
 
@@ -93,11 +93,11 @@ I recently watched [Gaurav Sen](https://www.youtube.com/channel/UCRPMAqdtSgd0Ipe
 
 * We can use client-server protocol or XMPP protocol
   * client-server protocol
-    * clientA sends a request to store a message in the server's database
-    * 🤮 clientB will need to poll the server (continuously ask server if there are new messages) which is extremely inefficient
+      * clientA sends a request to store a message in the server's database
+      * 🤮 clientB will need to poll the server (continuously ask server if there are new messages) which is extremely inefficient
   * XMPP protocol
-    * 😃 all machines (client and server) are peers (no client-server) and can send messages to each other
-    * web socket connection is taken - connection maintained
+      * 😃 all machines (client and server) are peers (no client-server) and can send messages to each other
+      * web socket connection is taken - connection maintained
 
 ## Session Service
 
