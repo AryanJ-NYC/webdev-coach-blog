@@ -85,10 +85,11 @@ function Navbar({ classes }) {
       </div>
       <div className={classes.socialMedia}>
         <IconButton
+          aria-label="Link to GitHub profile"
           className={classes.iconContainer}
           color="inherit"
           href="https://www.github.com/AryanJ-NYC"
-          aria-label="Link to GitHub profile"
+          rel="noreferrer"
           target="_blank"
         >
           <SvgIcon>
@@ -96,10 +97,11 @@ function Navbar({ classes }) {
           </SvgIcon>
         </IconButton>
         <IconButton
+          aria-label="Link to Twitter profile"
           className={classes.iconContainer}
           color="inherit"
           href="https://twitter.com/aryanjabbari"
-          aria-label="Link to Twitter profile"
+          rel="noreferrer"
           target="_blank"
         >
           <SvgIcon>
@@ -107,10 +109,11 @@ function Navbar({ classes }) {
           </SvgIcon>
         </IconButton>
         <IconButton
+          aria-label="Link to YouTube channel"
           className={classes.iconContainer}
           color="inherit"
           href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
-          aria-label="Link to YouTube channel"
+          rel="noreferrer"
           target="_blank"
         >
           <SvgIcon>
@@ -118,10 +121,11 @@ function Navbar({ classes }) {
           </SvgIcon>
         </IconButton>
         <IconButton
+          aria-label="Link to Twitch channel"
           className={classes.iconContainer}
           color="inherit"
           href="https://www.twitch.tv/aryanjabbari"
-          aria-label="Link to Twitch channel"
+          rel="noreferrer"
           target="_blank"
         >
           <SvgIcon>
@@ -129,10 +133,11 @@ function Navbar({ classes }) {
           </SvgIcon>
         </IconButton>
         <IconButton
+          aria-label="Link to Medium profile"
           className={classes.iconContainer}
           color="inherit"
           href="https://medium.com/@aryanjabbari"
-          aria-label="Link to Medium profile"
+          rel="noreferrer"
           target="_blank"
         >
           <SvgIcon>
