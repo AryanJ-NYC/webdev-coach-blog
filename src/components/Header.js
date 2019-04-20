@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import logo from '../img/logo.png'
+import logo from '../img/logo.png';
 import Navbar from './Navbar';
 
 const styles = theme => ({
@@ -16,8 +16,8 @@ const styles = theme => ({
   },
   iconContainer: {
     [theme.breakpoints.up('sm')]: {
-      fontSize: '2rem'
-    }
+      fontSize: '2rem',
+    },
   },
   img: {
     margin: 0,
@@ -38,7 +38,7 @@ const styles = theme => ({
     justifyContent: 'space-between',
     paddingBottom: 10,
     paddingTop: 10,
-  }
+  },
 });
 
 const Header = ({ classes }) => (
@@ -46,22 +46,17 @@ const Header = ({ classes }) => (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
         <Avatar
+          alt="WebDev Coach logo"
           component={Link}
           to="/"
           src={logo}
           className={classes.avatar}
           classes={{ img: classes.img }}
         />
-        <Typography
-          component={Link}
-          to="/"
-          color="inherit"
-          variant="h3"
-          className={classes.title}
-        >
+        <Typography component={Link} to="/" color="inherit" variant="h3" className={classes.title}>
           The WebDev Coach
         </Typography>
-        <div></div>
+        <div />
       </Toolbar>
       <Navbar />
     </AppBar>
