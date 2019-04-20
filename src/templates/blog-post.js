@@ -19,7 +19,7 @@ export const BlogPostTemplate = ({ content, contentComponent, tags, title, helme
       {helmet || ''}
       <Grid spacing={16} justify="center" container>
         <Grid xs={12} sm={11} item>
-          <Typography color="secondary" variant="h3" align="center">
+          <Typography variant="h3" align="center">
             {title}
           </Typography>
         </Grid>
