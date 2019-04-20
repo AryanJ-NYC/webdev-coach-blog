@@ -31,8 +31,10 @@ export const BlogPostTemplate = ({ content, contentComponent, tags, title, helme
               <Typography variant="h5">Tags</Typography>
               <List>
                 {tags.map(tag => (
-                  <ListItem button component={Link} to={`/tags/${kebabCase(tag)}/`} key={tag + `tag`}>
-                    <ListItemText color="secondary" primary={tag} />
+                  <ListItem key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`}>
+                      <ListItemText color="secondary" primary={tag} />
+                    </Link>
                   </ListItem>
                 ))}
               </List>
