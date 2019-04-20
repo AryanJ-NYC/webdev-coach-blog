@@ -27,6 +27,7 @@ function withRoot(Component) {
           <Helmet>
             <title>The WebDev Coach</title>
             <meta name="google-site-verification" content="ZVCOkHtG1HJg4pJ-lgnRdDjcXfhChLNXFZ9YIWbomcs" />
+            <html lang="en" />
           </Helmet>
           <JssProvider generateClassName={this.muiPageContext.generateClassName}>
             {/* MuiThemeProvider makes the theme available down the React
