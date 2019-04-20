@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: How to get Started in Web Development
+description: Learn to Start in Web Development
 date: 2019-01-20T01:12:53.094Z
 tags:
   - freecodecamp
@@ -31,4 +32,4 @@ Projects are your bread and butter in learning web development. The only reason 
 Choose an appropriate project. As humans, we get bored when a challenge is too easy and frustrated when a challenge is too difficult. If you’re learning HTML and CSS, do not try and create the next Facebook. Instead, [build a tribute page](https://learn.freecodecamp.org/responsive-web-design/responsive-web-design-projects/build-a-tribute-page). If you’re learning React, build a [Random Quote Machine](https://www.youtube.com/watch?v=3QngsWA9IEE&index=3&list=PL3cz80ehFCandt8KYS1NRzfjjIqpeu5c4). Make sure the project you choose matches your skillset.
 
 # Still Stuck?
-If you’re still stuck, I’m here to help. Send me a [tweet](https://twitter.com/aryanjabbari) with a description of where you’re stuck and I’ll do my best to unblock you. 
+If you’re still stuck, I’m here to help. Send me a [tweet](https://twitter.com/aryanjabbari) with a description of where you’re stuck and I’ll do my best to unblock you.

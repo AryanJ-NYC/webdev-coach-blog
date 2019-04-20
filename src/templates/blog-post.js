@@ -56,15 +56,21 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
+  const { description, title, tags } = post.frontmatter;
+  const helmet = (
+    <Helmet title={`${title} | The WebDev Coach`}>
+      <meta name="Description" content={description} />
+    </Helmet>
+  );
 
   return (
     <BlogPostTemplate
       content={post.html}
       contentComponent={HTMLContent}
-      description={post.frontmatter.description}
-      helmet={<Helmet title={`${post.frontmatter.title} | The WebDev Coach`} />}
-      tags={post.frontmatter.tags}
-      title={post.frontmatter.title}
+      description={description}
+      helmet={helmet}
+      tags={tags}
+      title={title}
     />
   );
 };
@@ -84,6 +90,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        description
         title
         tags
       }

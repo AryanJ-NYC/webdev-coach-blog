@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: Develop a Random Quote Machine with The WebDev Coach
+description: A YouTube series that describes how to build the FreeCodeCamp Random Quote Machine
 date: 2018-11-04T01:23:39.952Z
 tags:
   - freecodecamp
