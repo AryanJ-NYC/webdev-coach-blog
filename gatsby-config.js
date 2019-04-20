@@ -28,8 +28,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590
-            }
+              maxWidth: 590,
+            },
           },
           {
             resolve: 'gatsby-remark-prismjs',
@@ -38,7 +38,7 @@ module.exports = {
             resolve: 'gatsby-remark-external-links',
             options: {
               target: '_blank',
-              rel: 'nofollow',
+              rel: 'noreferrer',
             },
           },
         ],
