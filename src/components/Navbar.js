@@ -88,6 +88,7 @@ function Navbar({ classes }) {
           className={classes.iconContainer}
           color="inherit"
           href="https://www.github.com/AryanJ-NYC"
+          aria-label="Link to GitHub profile"
           target="_blank"
         >
           <SvgIcon>
@@ -98,6 +99,7 @@ function Navbar({ classes }) {
           className={classes.iconContainer}
           color="inherit"
           href="https://twitter.com/aryanjabbari"
+          aria-label="Link to Twitter profile"
           target="_blank"
         >
           <SvgIcon>
@@ -108,6 +110,7 @@ function Navbar({ classes }) {
           className={classes.iconContainer}
           color="inherit"
           href="https://www.youtube.com/channel/UCERIxMohPPYmwjtHF3DdlJQ"
+          aria-label="Link to YouTube channel"
           target="_blank"
         >
           <SvgIcon>
@@ -118,6 +121,7 @@ function Navbar({ classes }) {
           className={classes.iconContainer}
           color="inherit"
           href="https://www.twitch.tv/aryanjabbari"
+          aria-label="Link to Twitch channel"
           target="_blank"
         >
           <SvgIcon>
@@ -128,6 +132,7 @@ function Navbar({ classes }) {
           className={classes.iconContainer}
           color="inherit"
           href="https://medium.com/@aryanjabbari"
+          aria-label="Link to Medium profile"
           target="_blank"
         >
           <SvgIcon>
