@@ -7,10 +7,10 @@ const typography = new Typography({
   bodyFontFamily: ['Roboto', 'sans serif'],
   overrideStyles: () => ({
     h1: {
-      color: '#FE7F2D',
+      color: '#113643',
     },
     h2: {
-      color: '#FE7F2D',
+      color: '#113643',
     },
   }),
 });
