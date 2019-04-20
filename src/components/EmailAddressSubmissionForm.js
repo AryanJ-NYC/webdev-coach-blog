@@ -28,18 +28,14 @@ class EmailAddressSubmissionForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const emails = [{ email: this.state.email }];
-    const response = await fetch(
-      'https://api.sendgrid.com/v3/contactdb/recipients',
-      {
-        body: JSON.stringify(emails),
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Authorization:
-            'Bearer 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',
-        },
-        method: 'post',
-      }
-    );
+    const response = await fetch('https://api.sendgrid.com/v3/contactdb/recipients', {
+      body: JSON.stringify(emails),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: 'Bearer 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',
+      },
+      method: 'post',
+    });
     const body = await response.json();
     if (body.error_count) {
       this.setState({ isValid: false });
@@ -62,6 +58,7 @@ class EmailAddressSubmissionForm extends Component {
       <form className={classes.formContainer} onSubmit={this.handleSubmit}>
         <div>
           <TextField
+            id="email-address"
             className={classes.textField}
             label="Email Address"
             onChange={this.handleChange('email')}
@@ -72,17 +69,10 @@ class EmailAddressSubmissionForm extends Component {
             error={!this.state.isValid}
             required
           />
-          <Button
-            color="primary"
-            className={classes.button}
-            variant="contained"
-            type="submit"
-          >
+          <Button color="primary" className={classes.button} variant="contained" type="submit">
             Submit
           </Button>
-          {this.state.success && (
-            <Typography>Thank you for joining my mailing list!</Typography>
-          )}
+          {this.state.success && <Typography>Thank you for joining my mailing list!</Typography>}
         </div>
       </form>
     );
