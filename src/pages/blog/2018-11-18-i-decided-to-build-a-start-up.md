@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: I Decided to Build a Start-Up
+description: One person\'s voyage into creating an application for a start-up
 date: 2018-11-18T16:26:16.226Z
 tags:
   - startup
@@ -13,7 +14,7 @@ It is the openness of streaming, tweeting and updating others where the real pow
 # Product
 I’m a fan of productivity methods, books, and technology. I track my goals and tactics (actions taken to reach a goal) in 12-week sprints and use a Google Sheet to track my progress. This sheet calculates a score that reflects how well I did each sprint. I want to bring this Google Sheet to life in the form of a web application.
 
-I will _not_ be finishing this web application in a 24 hours. Instead, I will use Monday, November 26, 2018 as a deadline (deadlines are _extremely_ important) to have a functional MVP. The initial product will be free as I ask the internet for some help testing. 
+I will _not_ be finishing this web application in a 24 hours. Instead, I will use Monday, November 26, 2018 as a deadline (deadlines are _extremely_ important) to have a functional MVP. The initial product will be free as I ask the internet for some help testing.
 
 # Tech Stack
 I decided on [Next.js](https://nextjs.org/) as a React framework. I do not plan on writing my own server and will instead use [Firebase](https://firebase.google.com/) as a database (that is, when I confirm that I can export data from there if I decide to move elsewhere). For basic styling, I will use [Material-UI](https://material-ui.com/).

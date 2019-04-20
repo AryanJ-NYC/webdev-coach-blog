@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: Learning to Code? Get Off the Tutorial Treadmill!
+description: Learn to code by building projects instead of doing too many tutorials.
 date: 2018-12-14T22:34:05.041Z
 tags:
   - freecodecamp

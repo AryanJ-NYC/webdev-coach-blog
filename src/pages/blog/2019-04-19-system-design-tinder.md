@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: 'System Design: Tinder'
+description: 'Tinder system design notes based on YouTube video'
 date: 2019-04-19T16:46:49.471Z
 tags:
   - system design
