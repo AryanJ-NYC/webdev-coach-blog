@@ -63,7 +63,7 @@ const BlogPost = ({ data }) => {
       <meta name="og:image" content={twitterCardPicture} />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content="@aryanjabbari" />
       <meta name="twitter:site" content="@aryanjabbari" />
     </Helmet>
