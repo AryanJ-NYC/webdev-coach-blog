@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: 'The WebDev Coach',
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
