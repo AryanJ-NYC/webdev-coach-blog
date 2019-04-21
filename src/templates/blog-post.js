@@ -56,10 +56,11 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
-  const { description, title, tags } = post.frontmatter;
+  const { description, title, tags, twitterCardPicture } = post.frontmatter;
   const helmet = (
     <Helmet title={`${title} | The WebDev Coach`}>
       <meta name="Description" content={description} />
+      <meta name="og:image" content={twitterCardPicture} />
       <meta name="og:type" content="summary" />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
@@ -96,8 +97,9 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         description
-        title
         tags
+        title
+        twitterCardPicture
       }
     }
   }
