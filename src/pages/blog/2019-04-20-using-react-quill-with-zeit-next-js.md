@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Using React Quill with Zeit Next.js
 description: Add React Quill to a Zeit Next.js project
 date: 2019-04-20T23:39:50.430Z
-twitterCardPicture: 'https://quilljs.com/assets/images/logo.svg'
+twitterCardPicture: 'https://quilljs.com/assets/images/brand-asset.png'
 tags:
   - react
   - next.js

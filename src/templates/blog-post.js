@@ -61,9 +61,9 @@ const BlogPost = ({ data }) => {
     <Helmet title={`${title} | The WebDev Coach`}>
       <meta name="Description" content={description} />
       <meta name="og:image" content={twitterCardPicture} />
-      <meta name="og:type" content="summary" />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@aryanjabbari" />
       <meta name="twitter:site" content="@aryanjabbari" />
     </Helmet>
