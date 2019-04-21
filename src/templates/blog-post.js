@@ -60,10 +60,11 @@ const BlogPost = ({ data }) => {
   const helmet = (
     <Helmet title={`${title} | The WebDev Coach`}>
       <meta name="Description" content={description} />
-      <meta name="twitter:card" content="summary" />
+      <meta name="og:type" content="summary" />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={description} />
+      <meta name="twitter:creator" content="@aryanjabbari" />
       <meta name="twitter:site" content="@aryanjabbari" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
     </Helmet>
   );
 
