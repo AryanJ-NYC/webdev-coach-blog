@@ -32,7 +32,7 @@ class EmailAddressSubmissionForm extends Component {
       body: JSON.stringify(emails),
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        Authorization: 'Bearer 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',
+        Authorization: `Bearer ${process.env.GATSBY_MAILING_LIST_API_KEY}`,
       },
       method: 'post',
     });
