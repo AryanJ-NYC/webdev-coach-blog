@@ -34,7 +34,7 @@ To summarize, freeCodeCamp used the [Ghost blog platform](https://ghost.org/) to
 
 [@ben criticized the freeCodeCamp move to Medium](https://dev.to/ben/i-m-concerned-with-the-move-that-freecodecamp-just-pulled-by-leaving-medium-io8) explaining that:
 
-> FreeCodeCamp seems to have just pulled the plug and taken everyone’s Medium content with them, to be displayed in a different context, wiping out the canonical URLS, while depriving the authors their ability to edit, delete, or manage in any way.  
+> FreeCodeCamp seems to have just pulled the plug and taken everyone’s Medium content with them, to be displayed in a different context, wiping out the canonical URLs, while depriving the authors their ability to edit, delete, or manage in any way.  
 
 He [tweets his article](https://twitter.com/bendhalpern/status/1133444368289927174) to 29K+ of his followers. In the thread, he accuses freeCodeCamp of [literally stealing content without the consent of the copyright holder](https://twitter.com/bendhalpern/status/1133494706363609088) and [breaking the law](https://twitter.com/bendhalpern/status/1133459111184666631).
 
@@ -43,12 +43,12 @@ He [tweets his article](https://twitter.com/bendhalpern/status/11334443682899271
 @ossia has made his motivations for moving off of Medium very clear. It is obvious that Medium wants to monetize the freeCodeCamp blog posts while freeCodeCamp (in their usual fashion) believes in an open internet and blog posts that are free to read.
 
 @ben is concerned about freeCodeCamp and those who have created content for the freeCodeCamp publication. However, I don’t understand why that concern needed to be made public in front of the entire developer community. If the concern is real, why blast it? Why not approach @ossia in private or, better yet, schedule an open discussion with @ossia present?  Why accuse @ossia of being [“super flippant in addressing the issue”](https://twitter.com/bendhalpern/status/1133444368289927174)?
-[Tyler McGinnis](https://twitter.com/tylermcginnis) points out that @ben’s article [“feels a little premature and virtue signally"](https://twitter.com/tylermcginnis/status/1133490470829547520). I completely agree.
+[Tyler McGinnis](https://twitter.com/tylermcginnis) points out that @ben’s article [“feels a little premature and virtue signally."](https://twitter.com/tylermcginnis/status/1133490470829547520) I completely agree.
 
-This uproar on the @ben’s part comes off as a play against perceived competition (though [@ossia promises it will not be a competitor to dev.to](https://twitter.com/ossia/status/1133457561070579712)) and to promote his position as a content creator advocate.
+This uproar on the @ben’s part comes off as a play against the perceived competition (though [@ossia promises it will not be a competitor to dev.to](https://twitter.com/ossia/status/1133457561070579712)) and to promote his position as a content creator advocate.
 
 The freeCodeCamp migration from Medium to their own platform did not go so well. There are issues with the author link that are being patched up. Mistakes were made. However, given everything that [freeCodeCamp](https://www.freecodecamp.org) has done for the developer community (read: provide a FREE platform for ANYONE to learn web development), us as a developer community should give their small, non-profit organization the benefit of the doubt.
 
-Lastly, please feel at liberty to share your thoughts on this issue. Don’t let “content creators” tell you that it’s hard to understand if [“you’ve never been a content creator”](https://twitter.com/LittleKope/status/1133475647664398337) or that [you’re not at liberty to criticize @ben](https://twitter.com/LittleKope/status/1133790929389871104). Most of all, don’t let “content creators” make you feel as if your questions and concerns are [“costing  a lot of time”](https://twitter.com/LittleKope/status/1133801190096023552). Don’t let your voice be stifled.
+Lastly, please feel at liberty to share your thoughts on this issue. Don’t let “content creators,” tell you that it’s hard to understand if [“you’ve never been a content creator”](https://twitter.com/LittleKope/status/1133475647664398337) or that [you’re not at liberty to criticize @ben](https://twitter.com/LittleKope/status/1133790929389871104). Most of all, don’t let “content creators” make you feel as if your questions and concerns are [“costing a lot of time”](https://twitter.com/LittleKope/status/1133801190096023552). Don’t let your voice be stifled.
 
 I’m with @ossia. ✊
