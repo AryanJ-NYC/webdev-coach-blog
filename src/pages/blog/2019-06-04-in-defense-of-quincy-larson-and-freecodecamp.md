@@ -13,32 +13,36 @@ In case you missed, it [freeCodeCamp News has moved to Medium](https://www.freec
 Before we start this discussion, let’s recap.
 
 ## Recap
+
 ### Medium Threatens freeCodeCamp
+
 ![Quincy Describes Actions Taken By Medium in an Email]( https://i1.wp.com/wptavern.com/wp-content/uploads/2019/05/Screen-Shot-2019-05-31-at-1.48.01-PM.png)
 
 As seen in the image above, Quincy describes steps Medium took to get freeCodeCamp behind their paywall to capitalize on the traffic the freeCodeCamp News blog brings. The email clearly states that:
 
 > They pressured us to put our articles behind their paywalls. We refused. So they tried to buy us. […] We refused. Then they started threatening us with a lawyer.  
 
-The motivation to get freeCodeCamp away from Medium is clear: Medium sole interest is money. Even @ben will explain that [Medium Was Never Meant to be a Part of the Developer Ecosystem](https://dev.to/devteam/medium-was-never-meant-to-be-a-part-of-the-developer-ecosystem-25a0).
+The motivation to get freeCodeCamp away from Medium is clear: Medium sole interest is money. Even @ben explains that [Medium Was Never Meant to be a Part of the Developer Ecosystem](https://dev.to/devteam/medium-was-never-meant-to-be-a-part-of-the-developer-ecosystem-25a0).
 
 ### freeCodeCamp Moves off Medium
-On May 27th, 2019, freeCodeCamp announces their move off Medium. It is impossible for me to describe freeCodeCamp’s move off Medium better than @ossia himself:  [https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929](https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929).
+
+On May 27th, 2019, freeCodeCamp announces their move off Medium. It is impossible for me to describe freeCodeCamp’s move off Medium better than @ossia himself: [https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929](https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929).
 
 To summarize, freeCodeCamp used the [Ghost blog platform](https://ghost.org/) to serve as the home of freeCodeCamp News. He admits that the freeCodeCamp team is “still fixing quite a few bugs.”
 
 ### @ben Writes About the freeCodeCamp Move to Medium
-[@ben criticized the freeCodeCamp move to Medium]( https://dev.to/ben/i-m-concerned-with-the-move-that-freecodecamp-just-pulled-by-leaving-medium-io8) explaining that:
+
+[@ben criticized the freeCodeCamp move to Medium](https://dev.to/ben/i-m-concerned-with-the-move-that-freecodecamp-just-pulled-by-leaving-medium-io8) explaining that:
 
 > FreeCodeCamp seems to have just pulled the plug and taken everyone’s Medium content with them, to be displayed in a different context, wiping out the canonical URLS, while depriving the authors their ability to edit, delete, or manage in any way.  
 
 He [tweets his article](https://twitter.com/bendhalpern/status/1133444368289927174) to 29K+ of his followers. In the thread, he accuses freeCodeCamp of [literally stealing content without the consent of the copyright holder](https://twitter.com/bendhalpern/status/1133494706363609088) and [breaking the law](https://twitter.com/bendhalpern/status/1133459111184666631).
 
 ## Personal Opinion
+
 @ossia has made his motivations for moving off of Medium very clear. It is obvious that Medium wants to monetize the freeCodeCamp blog posts while freeCodeCamp (in their usual fashion) believes in an open internet and blog posts that are free to read.
 
 @ben is concerned about freeCodeCamp and those who have created content for the freeCodeCamp publication. However, I don’t understand why that concern needed to be made public in front of the entire developer community. If the concern is real, why blast it? Why not approach @ossia in private or, better yet, schedule an open discussion with @ossia present?  Why accuse @ossia of being [“super flippant in addressing the issue”](https://twitter.com/bendhalpern/status/1133444368289927174)?
-
 [Tyler McGinnis](https://twitter.com/tylermcginnis) points out that @ben’s article [“feels a little premature and virtue signally"](https://twitter.com/tylermcginnis/status/1133490470829547520). I completely agree.
 
 This uproar on the @ben’s part comes off as a play against perceived competition (though [@ossia promises it will not be a competitor to dev.to](https://twitter.com/ossia/status/1133457561070579712)) and to promote his position as a content creator advocate.
