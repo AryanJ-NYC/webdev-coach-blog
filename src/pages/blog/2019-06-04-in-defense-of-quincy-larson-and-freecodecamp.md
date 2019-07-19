@@ -8,7 +8,7 @@ date: 2019-06-04T13:42:24.726Z
 tags:
   - freecodecamp
 ---
-In case you missed, it [freeCodeCamp News has moved to Medium](https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929). Since then, there has been a slight uproar about copyright infringement and @ossia’s motivations.
+In case you missed it, [freeCodeCamp News has moved to Medium](https://www.freecodecamp.org/forum/t/we-just-moved-off-of-medium-and-onto-freecodecamp-news-heres-how-you-can-use-it/279929). Since then, there has been a slight uproar about copyright infringement and @ossia’s motivations.
 
 Before we start this discussion, let’s recap.
 
@@ -20,7 +20,7 @@ Before we start this discussion, let’s recap.
 
 As seen in the image above, Quincy describes steps Medium took to get freeCodeCamp behind their paywall to capitalize on the traffic the freeCodeCamp News blog brings. The email clearly states that:
 
-> They pressured us to put our articles behind their paywalls. We refused. So they tried to buy us. […] We refused. Then they started threatening us with a lawyer.  
+> They pressured us to put our articles behind their paywalls. We refused. So they tried to buy us. […] We refused. Then they started threatening us with a lawyer.
 
 The motivation to get freeCodeCamp away from Medium is clear: Medium sole interest is money. Even @ben explains that [Medium Was Never Meant to be a Part of the Developer Ecosystem](https://dev.to/devteam/medium-was-never-meant-to-be-a-part-of-the-developer-ecosystem-25a0).
 
@@ -34,7 +34,7 @@ To summarize, freeCodeCamp used the [Ghost blog platform](https://ghost.org/) to
 
 [@ben criticized the freeCodeCamp move to Medium](https://dev.to/ben/i-m-concerned-with-the-move-that-freecodecamp-just-pulled-by-leaving-medium-io8) explaining that:
 
-> FreeCodeCamp seems to have just pulled the plug and taken everyone’s Medium content with them, to be displayed in a different context, wiping out the canonical URLs, while depriving the authors their ability to edit, delete, or manage in any way.  
+> FreeCodeCamp seems to have just pulled the plug and taken everyone’s Medium content with them, to be displayed in a different context, wiping out the canonical URLs, while depriving the authors their ability to edit, delete, or manage in any way.
 
 He [tweets his article](https://twitter.com/bendhalpern/status/1133444368289927174) to 29K+ of his followers. In the thread, he accuses freeCodeCamp of [literally stealing content without the consent of the copyright holder](https://twitter.com/bendhalpern/status/1133494706363609088) and [breaking the law](https://twitter.com/bendhalpern/status/1133459111184666631).
 
