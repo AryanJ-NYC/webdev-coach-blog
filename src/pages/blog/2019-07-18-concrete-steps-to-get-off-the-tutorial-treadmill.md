@@ -16,7 +16,7 @@ My tutorial treadmill blog post was admittedly vague and metaphorical. Here, Iâ€
 
 Do not start out by trying to create the next Facebook. Instead:
 
-Learn the foundational pieces of web development: HTML, CSS and JavaScript. Go to the [freeCodeCamp curriculum](https://learn.freecodecamp.org/) and complete the Responsive Web Design Certification in parallel with the Codecademy [Introduction to HTML](https://www.codecademy.com/learn/learn-html) and [Introduction to CSS](https://www.codecademy.com/learn/learn-css) tutorials. This should take about half a month to a month.
+Learn the foundational pieces of web development: HTML and CSS. Go to the [freeCodeCamp curriculum](https://learn.freecodecamp.org/) and complete the Responsive Web Design Certification in parallel with the Codecademy [Introduction to HTML](https://www.codecademy.com/learn/learn-html) and [Introduction to CSS](https://www.codecademy.com/learn/learn-css) tutorials. This should take about half a month to a month.
 
 # Complete your First Project
 
