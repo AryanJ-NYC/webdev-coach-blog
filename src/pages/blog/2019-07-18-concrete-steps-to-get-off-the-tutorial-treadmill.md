@@ -27,10 +27,12 @@ Please do:
 1. Google everything your heart desires! It is NOT cheating to use Google to remind yourself of HTML elements and attributes you may have forgotten. Also use Google to remind yourself of CSS selectors and properties.
 2. Ask questions on [Twitter](https://twitter.com/aryanjabbari)  or the [freeCodeCamp forums](https://www.freecodecamp.org/forum/). Socialize with other developers-to-be in the same boat as you. Make some internet friends.
 3. Don’t be afraid to ask _why_ suggestions are made one way over another. Asking why is how you’ll learn.
+4. Take the code creation step-by-step. Break your vision down into bite-size chunks. Identify the very next step you can take to move towards project completion. For example, start off by figuring out how to create a title. Once you're done with that, render an image and center it. Now, what's next? 🤔
 
 Please **don’t**:
 
 1. Copy the code from the sample project. Everything you’ll learn comes from the struggle and frustration (it _WILL_ be frustrating) of creating something on your own (of course with help from Google).
+2. Get intimidated by the forest. Chop the website down tree by tree. This directly corresponds to point number 4 above.
 
 # Find a Peer Review
 
