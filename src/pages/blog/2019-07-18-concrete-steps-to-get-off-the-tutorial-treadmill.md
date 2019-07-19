@@ -4,6 +4,7 @@ title: Concrete Steps to Get Off the Tutorial Treadmill
 description: >-
   Stuck in the never-ending cycle web development tutorials? Read to find out
   how to get off the tutorial treadmill!
+twitterCardPicture: 'https://www.thewebdevcoach.com/img/screen-shot-2019-07-18-at-11.00.24-pm.png'
 date: 2019-07-19T02:59:19.037Z
 ---
 I recently received an email asking how to get off the [tutorial treadmill](https://www.thewebdevcoach.com/blog/2018-12-14-learning-to-code-get-off-the-tutorial-treadmill/):
