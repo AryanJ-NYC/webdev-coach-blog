@@ -26,8 +26,6 @@
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-remark": "^2.6.12",
     "gatsby-transformer-sharp": "^2.2.6",
-    "html-entities": "^1.2.1",
-    "html-parse-stringify": "^1.0.3",
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.4",
     "netlify-cms": "^2.9.7",
@@ -40,8 +38,7 @@
     "react-helmet": "^5.2.1",
     "react-jss": "^8.6.1",
     "react-typography": "^0.16.19",
-    "typography": "^0.16.19",
-    "uuid": "^3.2.1"
+    "typography": "^0.16.19"
   },
   "keywords": [
     "gatsby"
