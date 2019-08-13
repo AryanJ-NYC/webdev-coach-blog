@@ -1,5 +1,13 @@
 - name: Aryan Jabbari
   avatar: ./avatars/ProfilePic.jpg
-  bio: |
-   A New York City based web developer with a specialty in React, React Native and all things JavaScript. Follow him on Twitter.
+  bio: A New York City based web developer with a specialty in React, React Native and all things JavaScript. Follow him on Twitter.
   featured: true
+  social:
+    - name: twitter
+      url: https://twitter.com/aryanjabbari
+    - name: youtube
+      url: https://www.youtube.com/c/thewebdevcoach
+    - name: github
+      url: https://github.com/AryanJ-NYC
+    - name: linkedin
+      url: https://www.linkedin.com/in/aryanjabbari
