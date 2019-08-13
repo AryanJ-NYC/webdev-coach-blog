@@ -1,63 +1,26 @@
 module.exports = {
   siteMetadata: {
     title: 'The WebDev Coach',
+    name: 'The WebDev Coach',
+    siteUrl: 'https://www.thewebdevcoach.com/',
+    description: 'Learn web development with The WebDev Coach.',
+    hero: {
+      heading: 'Random ramblings about learning web development.',
+      maxWidth: 652,
+    },
+    social: [
+      {
+        name: `twitter`,
+        url: `https://twitter.com/aryanjabbari`,
+      },
+      {
+        name: `github`,
+        url: `https://github.com/AryanJ-NYC`,
+      },
+    ],
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/img`,
-        name: 'images',
-      },
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-prismjs',
-          },
-          {
-            resolve: 'gatsby-remark-external-links',
-            options: {
-              target: '_blank',
-              rel: 'noreferrer',
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Roboto', 'Material Icons'],
-        },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    '@narative/gatsby-theme-novela',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -69,12 +32,6 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         siteSpeedSampleRate: 10,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
