@@ -17,6 +17,14 @@ module.exports = {
         name: `github`,
         url: `https://github.com/AryanJ-NYC`,
       },
+      {
+        name: `linkedin`,
+        url: `https://www.linkedin.com/in/aryanjabbari`,
+      },
+      // {
+      //   name: `youtube`,
+      //   url: `https://www.youtube.com/c/thewebdevcoach`,
+      // },
     ],
   },
   plugins: [
