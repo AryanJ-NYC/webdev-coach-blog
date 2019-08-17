@@ -5,17 +5,17 @@
   "author": "Aryan Jabbari",
   "repository": "https://github.com/AryanJ-NYC/webdev-coach-blog.git",
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.2.2",
-    "gatsby": "^2.13.57",
+    "@narative/gatsby-theme-novela": "^0.3.7",
+    "gatsby": "^2.13.67",
     "gatsby-plugin-google-analytics": "^2.1.7",
-    "gatsby-plugin-netlify": "^2.1.4",
+    "gatsby-plugin-netlify": "^2.1.5",
     "gatsby-plugin-react-helmet": "^3.1.3",
-    "gatsby-plugin-sharp": "^2.2.11",
+    "gatsby-plugin-sharp": "^2.2.12",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images": "^3.1.8",
+    "gatsby-remark-images": "^3.1.12",
     "gatsby-source-filesystem": "^2.1.9",
-    "gatsby-transformer-remark": "^2.6.12",
+    "gatsby-transformer-remark": "^2.6.14",
     "gatsby-transformer-sharp": "^2.2.6",
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.4",
@@ -48,6 +48,6 @@
   },
   "devDependencies": {
     "prettier": "^1.18.2",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.7.1"
   }
 }

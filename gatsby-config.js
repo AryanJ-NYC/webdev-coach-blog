@@ -30,20 +30,6 @@ module.exports = {
   plugins: [
     '@narative/gatsby-theme-novela',
     {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-external-links',
-            options: {
-              target: '_blank',
-              rel: 'noreferrer',
-            },
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-128084522-1',
