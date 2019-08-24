@@ -5,9 +5,10 @@
   "author": "Aryan Jabbari",
   "repository": "https://github.com/AryanJ-NYC/webdev-coach-blog.git",
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.3.7",
+    "@narative/gatsby-theme-novela": "^0.4.1",
     "gatsby": "^2.13.67",
     "gatsby-plugin-google-analytics": "^2.1.7",
+    "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-netlify": "^2.1.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

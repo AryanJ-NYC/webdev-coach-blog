@@ -28,7 +28,18 @@ module.exports = {
     ],
   },
   plugins: [
-    '@narative/gatsby-theme-novela',
+    {
+      resolve: '@narative/gatsby-theme-novela',
+      options: {
+        mailchimp: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://gmail.us3.list-manage.com/subscribe/post?u=7d1500e47fd7aa0bd674cab1e&amp;id=85ef56880a',
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
