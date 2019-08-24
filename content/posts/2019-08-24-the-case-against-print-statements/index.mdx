@@ -1,0 +1,57 @@
+---
+author: Aryan Jabbari
+title: The Case Against Print Statements in your Main Branch
+description: >-
+  Avoid leaving print statements in your master branch. Here's why.
+twitterCardPicture: 'https://www.thewebdevcoach.com/img/screen-shot-2019-07-18-at-11.00.24-pm.png'
+date: 2019-08-24
+hero: ./img/the-case-against-print-statements-hero.png
+---
+
+# The Case Against Print Statements in your Development Branch
+
+Recently, a coworker (who is new to our codebase) asked me to add print statements, specifically `console.log()` statements (as we're using React Native), to our code wherever an "important event" happens. He explained that this would help him understand what exactly in the codebase.
+
+My knee jerk response was "Absolutely not!" However, I never sat down and fleshed out my thoughts on why I am against print statements as permanent fixtures in a codebase. Well, here it is.
+
+## What This Blog Post Is
+This blog post is my argument against leaving print statements in a codebase. By that, I mean leaving print statements in the development branch (whether it's named master, development, etc.) of your codebase.
+
+## What This Blog Post is Not
+This blog post is not an argument against using print statements in your code. Print statements are invaluable when writing a feature or debugging existing code. They provide a glance into what exactly is happening as your code runs.
+
+## The Negative Effects of Print Statements in Your Development Branch
+
+### ⛷️ Slippery Slope
+The decision to allow print statements to be merged into your development branch is a slippery slope. Are all and any print statements allowed to be merged into the main branch? If not, which ones are allowed and which ones are not? What makes one subjectively useful print statement better than the other? Who decides where to use print statements? If the team decides where print statements are allowed, how much time and resources should be spent on this decision? Where is the documentation and list of good 👼 vs. evil 😈 print statements kept? Who will maintain said documentation?
+
+By now, I imagine you understand my point. A seemingly trivial decision leads to a lot of additional overhead for a development team.
+
+### 🤯 Anxiety and a Feeling of Being Overwhelmed for New Developers
+Seemingly random print statements overwhelm and distract developers who are completely new to a codebase.
+
+As random objects and strings run across the console, anxiety and impostor syndrome may creep in as newer developers, especially those that are junior, may feel they'll never understand an existing codebase
+
+ Additionally, these print statements entice curious developers to find where they stem from and why they are firing (OK, maybe I'm speaking for my distracted self here) even if they have nothing to do with the feature they should be developing or the bug they should be fixing. This, of course, leads to lost development time (though you can argue that this sparked curiosity leads to a deeper understanding of the codebase).
+
+### 🙉 Noise
+Each additional print statement added to the codebase is another print statement that one or more developers will eventually ignore. As a print statement ages, their usefulness declines drastically. Eventually, even the developer that added the print statement to the codebase will find it useless. What to do with all this noise? A developer now needs to decide which once "useful" (see: good 👼 print statements) print statements must stay and which "useless" (see: evil 😈 print statements) must go then make a pull request to remove these print statements. This garbage collection of print statements is a recurring task that will never end as long as you allow print statements to be part of your codebase.
+
+Additionally, "useless" print statements in your codebase leads to...
+
+### 💔 Broken Windows (and Broken Hearts, maybe)
+Imagine a codebase that is filled with print statements that many may see as "useless". They were added carelessly and never cleaned up before going into the development branch (because, hey, print statements are allowed in our codebase now). These evil print statements become technical debt that must be cleaned up (as they are now noise). In an ideal development world, this technical debt is cleaned immediately because this seemingly small problem can lead to big problems: one part of the codebase that goes unfixed leads to another part of the codebase that is left unfixed leading to another. Eventually, a small problem snowballs into many small problems that snowball into one ugly codebase that is a drag to work with.
+
+This is known as the [broken window theory](https://www.artima.com/intv/fixit2.html). Don't let print statements break your heart and lead to a codebase full of broken windows.
+
+### 🐛 A Codebase that is Harder to Debug
+We've established that the console is a mess due to all those 😈 evil print statements that are yet to run through the human garbage collection process. Every click of a button leads to dozens of useless print statements.
+
+Now, you need to develop a new feature and want to add those useful print statements (that every developer uses) to ensure that a function is running properly, an HTTP request is formed properly and the server response is exactly what is expected. You add your print statement which is now caught in the noise of a bunch of useless print statements.
+
+The codebase is harder and more time-consuming to debug as new print statements must be located in a sea of other print statements. Anything that makes a codebase more difficult to debug is a huge negative (as this eventually leads to more bugs in the code).
+
+## Conclusion
+A decision as seemingly innocuous as allowing print statements in your main branch may have huge effects on your code. Of course, every codebase and development team is different. Take the time out to analyze this decision (and all decisions!) with your team.
+
+Code safely.
