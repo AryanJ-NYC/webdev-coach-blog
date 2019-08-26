@@ -43,7 +43,7 @@ Every extra print statement added to the codebase is another print statement tha
 Additionally, "useless" print statements in your codebase leads to...
 
 ### 💔 Broken Windows (and Broken Hearts, maybe)
-Imagine a codebase filled with print statements that many may see as "useless". They are added carelessly and never cleaned up before going into the development branch (because, hey, print statements are allowed in our codebase now). These evil print statements become technical debt that must be cleaned up (as they are now noise). In an ideal development world, this technical debt is cleaned immediately because this seemingly small problem can lead to big problems: one part of the codebase that goes unfixed leads to another part of the codebase that is left unfixed leading to another. Eventually, a small problem snowballs into many small problems that snowball into one ugly codebase that is a drag to work with.
+Imagine a codebase filled with print statements that many perceive as "useless". They are added carelessly and never cleaned up before going into the development branch (because, hey, print statements are allowed in our codebase now). These evil print statements become technical debt that must be cleaned up (as they are now noise). In an ideal development world, this technical debt is cleaned immediately because this seemingly small problem can lead to big problems: one part of the codebase that goes unfixed leads to another part of the codebase that is left unfixed leading to another. Eventually, a small problem snowballs into many small problems that snowball into one ugly codebase that is a drag to work with.
 
 This is the [broken window theory](https://www.artima.com/intv/fixit2.html). Don't let print statements break your heart and lead to a codebase full of broken windows.
 
@@ -53,6 +53,11 @@ We've established that the console is a mess due to all those 😈 evil print st
 Now, you need to develop a new feature and want to add those useful print statements (that every developer uses) to ensure that a function runs properly, an HTTP request is properly made and the server response complies with the data contract. You add your print statement which is now caught in the noise of a bunch of useless print statements.
 
 The codebase is harder and more time-consuming to debug as new print statements must be located in a sea of other print statements. Anything that makes a codebase more difficult to debug is a huge negative (as this leads to more bugs in the code).
+
+### ❌ Mistaken Logs in Production
+With dozens of print statements in your codebase and many being called multiple times, your surface area for a big mistake increases. More specifically, the chances of logging a real user's [personally identifiable information (PII)](https://en.wikipedia.org/wiki/Personal_data) increases.
+
+That said, if print statements are allowed in your codebase, you must strip them before going into production. Of course, this is one more piece of maintenance that must be done to support your dear print statements. 😴
 
 ## Conclusion
 A decision as innocuous as allowing print statements in your main branch may have huge effects on your code. Of course, every codebase and development team is different. Take the time out to analyze this decision (and all decisions!) with your team.
