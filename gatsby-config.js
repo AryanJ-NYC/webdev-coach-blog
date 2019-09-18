@@ -32,6 +32,7 @@ module.exports = {
       resolve: '@narative/gatsby-theme-novela',
       options: {
         mailchimp: true,
+        sources: { local: true }
       },
     },
     {
