@@ -11,14 +11,14 @@ Recently, I discovered NestJS and instantly fell in love. It is everything that 
 ## Before We Get Started
 This tutorial is not meant for beginners. It will not cover Node basics. If you're looking to learn how Node and Express work, I made [a series of videos where I create and deploy a basic timestamp microservice](https://www.youtube.com/playlist?list=PL3cz80ehFCan4ph_96mDMCJuJ-bRMq9Yd). Additionally, it will not cover GraphQL basics.
 
-This tutorial uses `nest-cli` version 6.6.4 as was written on September 18th, 2019. If anything is out of date or to report any errors/blockers, please feel free to [send me a tweet](https://twitter.com/AryanJabbari).
+This tutorial uses `nest-cli` version 6.6.4 and was written on September 18th, 2019. If anything is out of date or to report any errors/blockers, please feel free to [send me a tweet](https://twitter.com/AryanJabbari).
 
-If, at any point you feel lost, you can take a look at [the final form of this code](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial).
+If at any point you feel lost, you can take a look at [the final form of this code](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial).
 
 With all of that out of the way, let's do this!
 
 ## Getting Started with NestJS
-NestJs is a Node.js framework that is compatible with both TypeScript and pure JavaScript. It comes with [guard](https://docs.nestjs.com/guards), [pipe](https://docs.nestjs.com/pipes) and [interceptor](https://docs.nestjs.com/interceptors) support out-of-the-box. This makes it easy-to-use yet extremely powerful.
+NestJS is a Node.js framework that is compatible with both TypeScript and pure JavaScript. It comes with [guard](https://docs.nestjs.com/guards), [pipe](https://docs.nestjs.com/pipes) and [interceptor](https://docs.nestjs.com/interceptors) support out-of-the-box. This makes it easy-to-use yet extremely powerful.
 
 To get started, install the NestJS CLI. This allows you to easily create a new NestJS project.
 ```bash
@@ -89,13 +89,13 @@ import { join } from 'path';
 export class AppModule {}
 ```
 
-I know, I know. There are tons of changes in here that I threw at you all. The [NestJS Graphql documentation](https://docs.nestjs.com/graphql/quick-start) does a fantastic job at explaining these changes. Here's my take.
+I know, I know. There are tons of changes in here that I threw at you all. The [NestJS GraphQL documentation](https://docs.nestjs.com/graphql/quick-start) does a fantastic job at explaining these changes. Here's my take.
 
 ### GraphQLModule.forRoot()
 This registers the `GraphQLModule` with the server. The `.forRoot()` method takes an `options` object as an argument.
 
 ### definitions
-The `@nestjs/graphql` package automatically generates TypeScript defintions from the GraphQL schemas (see `typePaths`). We use the `definitions` object to configure the `path` where TypeScript definitions should be saved. By default, the GraphQL types are transformed to interfaces. I personally prefer classes which is what is seen in `definitions.outputAs`.
+The `@nestjs/graphql` package automatically generates TypeScript defintions from the GraphQL schemas (see `typePaths`). We use the `definitions` object to configure the `path` where TypeScript definitions should be saved. By default, the GraphQL types are transformed to [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html). I personally prefer [classes](https://www.typescriptlang.org/docs/handbook/classes.html) which is what is seen in `definitions.outputAs`.
 
 ### typePaths
 `typePaths` tells the `GraphQLModule` where in the project to look for GraphQL files.
@@ -200,7 +200,7 @@ export class MessagesResolver {
   @Mutation()
   createMessage(@Args('description') description: string) {
     const id = this.messagesThatReallyShouldBeInADb.length;
-    const newMessage = { description };
+    const newMessage = { id, description };
     this.messagesThatReallyShouldBeInADb.push(newMessage);
     return newMessage;
   }
@@ -223,8 +223,8 @@ which should successfully return:
 Feel free to create a few messages using our new mutation and query for all messages.
 
 ## Conclusion
-With that, you now have a NestJS server complete with GraphQL, a simple GraphQL schema and a simple resolver for that schema (complete with a query and mutation). If you did everything correctly, the `messages` query and `createMessage` mutation should work as it does in this [demo server](https://enigmatic-journey-72826.herokuapp.com/graphql).
+With that, you now have a NestJS server complete with GraphQL, a simple GraphQL schema and a simple resolver for that schema (complete with a query and mutation). If you did everything correctly, the `messages` query and `createMessage` mutation should work as it does in this [demo server](https://enigmatic-journey-72826.herokuapp.com/graphql). Again, if at any time you got lost and want to see the entire demo project, check out [my GitHub repository](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial).
 
-The next step is to add a database to this stack. Prisma is an amazing solution that provides us with additional GraphQL and database tooling. In the next installment of this series, we will dive into using Prisma to save our messages.
+The next step is to add a database to this stack. [Prisma](https://www.prisma.io/) is an amazing solution that provides us with additional GraphQL and database tooling. In the next installment of this series, we will dive into using Prisma to save our messages.
 
 If you liked this post, please support me by following me on [Twitter](https://twitter.com/AryanJabbari), [YouTube](https://www.youtube.com/c/thewebdevcoach) and [GitHub](https://github.com/AryanJ-NYC).
