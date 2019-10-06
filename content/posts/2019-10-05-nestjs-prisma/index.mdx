@@ -192,7 +192,7 @@ and import the `PrismaModule` in our `MessagesModule`:
 // src/messages/messages.module.ts
 import { Module } from '@nestjs/common';
 import { MessagesResolver } from './messages.resolver';
-import { PrismaModule } from 'src/prisma/prisma.module';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
@@ -213,7 +213,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Resolver()
 export class MessagesResolver {
-  // this constructor is how use injection in NestJS
+  // the injected dependency is injected as an argument to the constructor
   constructor(private readonly prisma: PrismaService) {}
 
   @Query()
