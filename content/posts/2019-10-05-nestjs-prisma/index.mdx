@@ -43,8 +43,10 @@ You'll be given a choice of Prisma servers:
 
 For this tutorial, we will set up a Demo server + MySQL database.
 
-The CLI will continue to ask configuration questions. Please be sure to use the `Prisma TypeScript Client` when asked:
+The CLI will continue to ask configuration questions. Please be sure to choose `Don't generate` when asked for the programming language of the Prisma client:
 ![Photo of client choices Prisma CLI provides](./img/prisma-client-choice.png)
+
+We do choose this since we will be generating the Prisma client later using `prisma-binding`.
 
 ## Defining Our Data Model and Deploying
 After Prisma instantiation succeeds, two new files will be created at the root of our project:
@@ -62,7 +64,13 @@ type Message {
 }
 ```
 
-If everything worked as planned, Prisma will have generated a schema and TypeScript types definitions at `/src/generated/prisma-client`. Feel free to open up that folder and take a look around. Oddly enough, we will not be using this generated schema. We will use `prisma-binding` instead to generate a schema we can use with NestJS.
+Now that we edited the Prisma data model to make it our own, we are ready to deploy to Prisma and instantiate our database. To do this, run:
+
+```bash
+prisma deploy
+```
+
+This will deploy our changes to the database. If you change the data model in any way, `prisma deploy` needs to be re-run to ensure the database we are using and the Prisma schema and client stay up-to-date with our data model changes.
 
 ## Generate GraphQL Schema
 The generated schema needs to be bound to GraphQL and we must create a Nest service from the said schema. To do that, we need to generate API code and type annotations. Additionally, we will need to download the GraphQL schema (the schema we have now is in TypeScript) from our endpoint. The [`graphql-cli`](https://github.com/Urigo/graphql-cli) takes care of both these things.
