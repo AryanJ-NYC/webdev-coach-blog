@@ -24,6 +24,9 @@ module.exports = {
       {
         name: `linkedin`,
         url: `https://www.linkedin.com/in/aryanjabbari`,
+      },      {
+        name: `instagram`,
+        url: `https://www.instagram.com/thewebdevcoach/`,
       },
     ],
   },
