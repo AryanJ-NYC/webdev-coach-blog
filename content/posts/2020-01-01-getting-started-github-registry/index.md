@@ -10,13 +10,29 @@ hero: ./img/getting-started-with-gpr.jpg
 
 ## What is GitHub Package Registry?
 
-Like `npm`, the GitHub Package Registry hosts software packages both privately and publicly. These packages can be downloaded and used in project (like `npm`). Nothing much in your current workflow needs to change.
+Like `npm`, the GitHub Package Registry hosts software packages both privately and publicly. These packages can be downloaded and used in your projects (like `npm`). Nothing much in your current workflow needs to change.
 
 ## [Authenticating to GitHub Packages](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages)
 
 ### Create a Personal Access Token
 
-If you haven't already, you'll need to create a GitHub personal access token for use in the command line. I suggest going through the [official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to do this.
+If you haven't already, you'll need to create a GitHub personal access token for use in the command line:
+
+1. In the upper-right hand corner of any GitHub page, click your profile photo then click _Settings_ (which should take you to https://github.com/settings/profile):
+  ![GitHub settings dropdown](./img/settings.png)
+2. On the left sidebar, click _Developer settings_. This should take you to https://github.com/settings/apps
+3. On the left sidebar, click _Personal access tokens_. This should take you to https://github.com/settings/tokens.
+4. Click the _Generate new token_ button and create a new token with the following permissions:
+    * `read:packages`: allows you to download packages from GitHub Package Registry
+    * `write:packages`: allows you to upload packages to the GitHub Package Registry
+    * `delete:packages`: allows you to delete packages from the GitHub Package Registry
+
+  ![Necessary permissions](./img/permissions.png)
+5. Scroll down to the bottom and click the green _Generate token_ button.
+6. Click the copy to clipboard icon to copy the token to your clipboard. Make sure to store it in a safe place (perhaps LastPass or 1Password?) as this is the only time you'll be seeing this token.
+7. You'll use this token in the following steps to log into the GitHub Package Registry.
+
+Please refer to the [GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) for additional information.
 
 ### Authenticate to GitHub Packages
 
@@ -89,7 +105,7 @@ Please note that `your-github-name` must be all lowercase! Additionally, this fi
 
 Note: This'll also work when deploying to services like Netlify, Zeit Now, etc.
 
-And that's it! You can now install from and publish to the GitHub Package Registry. If you've any questions, take a look at the [GitHub documentation for configuring npm for use with GitHub packages] or feel free to reach out to me on [Twitter](https://twitter.com/AryanJabbari).
+And that's it! You can now install from and publish to the GitHub Package Registry. If you've any questions, take a look at the [GitHub documentation for configuring npm for use with GitHub packages](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages) or feel free to reach out to me on [Twitter](https://twitter.com/AryanJabbari).
 
 ## Follow Me
 * [YouTube](https://www.youtube.com/c/thewebdevcoach)
