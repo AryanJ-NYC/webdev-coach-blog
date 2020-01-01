@@ -44,7 +44,7 @@ Now it's time to use the personal access token you just created. Run the followi
 
 ## [Publishing to GitHub Package Registry](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages#publishing-a-package)
 
-Your all ready to publish your first package in the GitHub Package Registry. Please note that your package will be published under `@your-github-name/package-name` (unlike what you're likely used to with the `npm` registry.
+You're all ready to publish your first package in the GitHub Package Registry. Please note that your package will be published under `@your-github-name/package-name` (unlike what you're likely used to with the `npm` registry.
 
 Before trying to publish, make sure you've already [authenticated](#authenticating-to-github-packages).
 
