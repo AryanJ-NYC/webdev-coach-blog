@@ -18,13 +18,18 @@ module.exports = {
         url: `https://www.youtube.com/c/thewebdevcoach`,
       },
       {
+        name: `devto`,
+        url: `https://dev.to/aryanjnyc`,
+      },
+      {
         name: `github`,
         url: `https://github.com/AryanJ-NYC`,
       },
       {
         name: `linkedin`,
         url: `https://www.linkedin.com/in/aryanjabbari`,
-      },      {
+      },
+      {
         name: `instagram`,
         url: `https://www.instagram.com/thewebdevcoach/`,
       },
@@ -35,7 +40,7 @@ module.exports = {
       resolve: '@narative/gatsby-theme-novela',
       options: {
         mailchimp: true,
-        sources: { local: true }
+        sources: { local: true },
       },
     },
     {
