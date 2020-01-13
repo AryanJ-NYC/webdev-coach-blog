@@ -5,7 +5,8 @@ description: Integrate Prisma with NestJS.
 date: 2019-10-05
 hero: ./img/nestjs-prisma.jpg
 ---
-import StyledYouTube from '../../../src/components/StyledYouTube'
+
+import StyledYouTube from "../../../src/components/StyledYouTube";
 
 # Use Prisma with a NestJS GraphQL Server
 
@@ -17,7 +18,7 @@ This tutorial is not meant for beginners and will not cover Node, GraphQL or Nes
 
 I made [a video tutorial](https://www.youtube.com/watch?v=J1mTfisEYdw) based off of this blog post. I suggest reading this blog post and watching the video as they complement each other well.
 
-<StyledYouTube videoId='J1mTfisEYdw' />
+<StyledYouTube videoId="J1mTfisEYdw" />
 
 If at any point you get lost in this tutorial, please refer to [this tutorial's code on GitHub](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial/tree/with-prisma). It should contain everything you need to catch up and integrate Prisma with NestJS.
 
@@ -26,9 +27,11 @@ If you want to see this code in action, please visit https://enigmatic-journey-7
 Alright, let's crush some code.
 
 ## Where We Left Off
+
 If you followed [my last tutorial](https://www.thewebdevcoach.com/stand-up-a-node-js-server-with-nestjs-including-typescript-and-graphql) correctly, you should end up with code that looks like [this GitHub branch](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial/tree/nestjs-graphql). When you run `yarn start:dev`, a GraphQL server should spin up at [`http://localhost:3000/graphql`](http://localhost:3000). In the GraphQL playground, you should be able to make a `messages` query and a `createMessage` mutation. The server will look like [this one](https://enigmatic-journey-72826.herokuapp.com/graphql). If any of that is untrue, please refer to [the section above](#before-we-get-started).
 
 ## Let's Get Ready for Prisma
+
 The first thing we need to do is instantiate a Prisma demo server and upload our data model to Prisma. For this, we'll use the [prisma-cli](https://github.com/prisma/prisma/tree/master/cli).
 
 ```bash
@@ -54,9 +57,11 @@ The CLI will continue to ask configuration questions. Please be sure to choose `
 We choose this since we will be generating the Prisma client later using `prisma-binding`.
 
 ## Defining Our Data Model and Deploying
+
 After Prisma instantiation succeeds, two new files will be created at the root of our project:
-* `prisma.yml` - a configuration file Prisma uses to generate their schema, define schema output paths, etc.
-* `datamodel.prisma` - our project's data model which Prisma will use to generate schemas
+
+- `prisma.yml` - a configuration file Prisma uses to generate their schema, define schema output paths, etc.
+- `datamodel.prisma` - our project's data model which Prisma will use to generate schemas
 
 `datamodel.prisma` is initialized with a basic `User` model. We will replace it with the `Message` model (be sure to add the new `@id` directive that Prisma supplies us with) from our `src/schema.graphql` file:
 
@@ -78,6 +83,7 @@ prisma deploy
 This will deploy our changes to the database. If you change the data model in any way, `prisma deploy` needs to be re-run to ensure the database we are using and the Prisma schema and client stay up-to-date with our data model changes.
 
 ## Generate GraphQL Schema
+
 The generated schema needs to be bound to GraphQL and we must create a Nest service from said schema. To do that, we need to generate API code and type annotations. Additionally, we will need to download the GraphQL schema (the schema we have now is in TypeScript) from our Prisma endpoint. The [`graphql-cli`](https://github.com/Urigo/graphql-cli) takes care of both these things.
 
 ```bash
@@ -104,6 +110,7 @@ graphql get-schema
 Now that we've created a new (more complete) schema, we can delete the `src/schema.graphql` that we created in the [last tutorial](https://www.thewebdevcoach.com/stand-up-a-node-js-server-with-nestjs-including-typescript-and-graphql).
 
 ## Bind our GraphQL Server with Prisma
+
 Prisma already has a GraphQL server running in front of the database they set up for us. We want to write our very own resolvers leveraging the Prisma GraphQL server and schema. To do this, we'll need to use [`prisma-binding`](https://github.com/prisma-labs/prisma-binding). This allows us to use the Prisma database service to more easily implement our own GraphQL resolvers.
 
 First, let's install prisma-binding:
@@ -141,6 +148,7 @@ graphql codegen
 You'll see a new file at `/src/prisma/prisma.binding.ts` which contains the API that we will use to interact with our Prisma server.
 
 ## Create a Prisma Service
+
 Now, we need a NestJS service that encapsulates the Prisma binding and will be responsible for interacting with our Prisma server. For this, we'll use the Nest CLI. In your Terminal, run:
 
 ```bash
@@ -161,29 +169,31 @@ If this was successful, `src/prisma/prisma.service.ts` (and a corresponding test
 
 ```ts
 // src/prisma/prisma.service.ts
-import { Injectable } from '@nestjs/common';
-import { Prisma } from './prisma.binding';
+import { Injectable } from "@nestjs/common";
+import { Prisma } from "./prisma.binding";
 
 @Injectable()
 export class PrismaService extends Prisma {
   constructor() {
     super({
-      endpoint: 'https://us1.prisma.sh/aryan-j/use-your-own-endpoint/dev',
-      debug: false,
+      endpoint:
+        "https://us1.prisma.sh/aryan-j/use-your-own-endpoint/dev",
+      debug: false
     });
   }
 }
 ```
 
 ## Use PrismaService to Manipulate Data in Prisma
+
 The last thing we need to do is use our newly created `PrismaService` inside of our `MessagesResolver`. In NestJS, we need to be sure to export the service we want to share with other modules. With that service exported, any other module that imports that module will be able to use the exported service.
 
 In our `PrismaModule` (`/src/prisma.module.ts`), let's export the `PrismaService`:
 
 ```ts
 // src/prisma/prisma.module.ts
-import { Module } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
+import { Module } from "@nestjs/common";
+import { PrismaService } from "./prisma.service";
 
 @Module({
   providers: [PrismaService],
@@ -193,16 +203,17 @@ export class PrismaModule {}
 ```
 
 and import the `PrismaModule` in our `MessagesModule`:
+
 ```ts
 // src/messages/messages.module.ts
-import { Module } from '@nestjs/common';
-import { MessagesResolver } from './messages.resolver';
-import { PrismaModule } from '../prisma/prisma.module';
+import { Module } from "@nestjs/common";
+import { MessagesResolver } from "./messages.resolver";
+import { PrismaModule } from "../prisma/prisma.module";
 
 @Module({
   imports: [PrismaModule],
   providers: [MessagesResolver],
-  exports: [MessagesResolver],
+  exports: [MessagesResolver]
 })
 export class MessagesModule {}
 ```
@@ -214,22 +225,33 @@ Lastly, in our `MessagesResolver`, we need to do a number of things:
 3. Forward the `messages` query and the `createMessage` mutation to our Prisma server.
 
 ```ts
-import { Mutation, Resolver, Query, Args } from '@nestjs/graphql';
-import { PrismaService } from '../prisma/prisma.service';
+import {
+  Mutation,
+  Resolver,
+  Query,
+  Args
+} from "@nestjs/graphql";
+import { PrismaService } from "../prisma/prisma.service";
 
 @Resolver()
 export class MessagesResolver {
   // the injected dependency is injected as an argument to the constructor
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService
+  ) {}
 
   @Query()
   messages(@Args() args) {
-    return this.prisma.query.messages(args);
+    return this.prisma.query.messages(
+      args
+    );
   }
 
   @Mutation()
   createMessage(@Args() args) {
-    return this.prisma.mutation.createMessage(args);
+    return this.prisma.mutation.createMessage(
+      args
+    );
   }
 }
 ```
@@ -237,6 +259,7 @@ export class MessagesResolver {
 That's it! Your `MessagesResolver` is now using Prisma to resolve its queries and mutations. Let's test it!
 
 ## Testing Our New Resolvers
+
 Open up [http://localhost:3000/graphql](http://localhost:3000/graphql). In the playground, we can use the following query and mutation:
 
 ```graphql
@@ -247,8 +270,10 @@ query allMessages {
   }
 }
 
-mutation createMessage{
-  createMessage(data: {description: "Hello"}) {
+mutation createMessage {
+  createMessage(
+    data: { description: "Hello" }
+  ) {
     id
     description
   }
@@ -256,6 +281,7 @@ mutation createMessage{
 ```
 
 ## Conclusion
+
 With this, you should be able to use Prisma with NestJS. Try extending the code to allow for message deletion and updates!
 
 If at any point you got lost in this tutorial, please refer to [this tutorial's code on GitHub](https://github.com/AryanJ-NYC/nestjs-graphql-tutorial/tree/with-prisma). It should contain everything you need to catch up and integrate Prisma with NestJS.
