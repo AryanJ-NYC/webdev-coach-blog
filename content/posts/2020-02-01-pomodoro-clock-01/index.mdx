@@ -1,0 +1,420 @@
+---
+author: Aryan Jabbari
+title: "freeCodeCamp Pomodoro Clock 01: React Functional Components and Local State Using Hooks"
+description: Write your first React functional components with local state using React hooks
+date: 2020-02-02
+hero: "./img/pomodoro-02.png"
+---
+
+import StyledYouTube from "../../../src/components/StyledYouTube";
+
+# freeCodeCamp Pomodoro Clock 01: React Functional Components and Local State
+
+Welcome back!
+
+This tutorial is the second installment of a tutorial series where I cover the [freeCodeCamp Pomodoro Clock project](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-pomodoro-clock). I’ll be following the spec pretty closely including passing 100% of the tests in the freeCodeCamp test suite.
+
+If you missed the last installment, feel free to read at [freeCodeCamp Pomodoro Clock 00: create-react-app Development Environment](https://www.thewebdevcoach.com/freeCodeCamp-Pomodoro-Clock-00:-create-react-app-Development-Environment).
+
+As you read this blog post, don’t forget to stop and try it yourself before I reveal the correct code. You’ll learn a lot more that way!
+
+For those of you who learn better via video, I’ve also created a video walking through these same steps:
+
+<StyledYouTube videoId="tkkB5nEk_aQ" />
+
+## Goals
+
+By the end of this tutorial, you should:
+
+- understand how to create a new functional component
+- understand how to read and set state in a functional component
+- understand how to bind a function to a button’s click event handler
+- how to convert seconds into minutes using [Moment.js](http://momentjs.com)
+
+To achieve these goals, we’ll create three components:
+
+- a `Break` component that tracks the break time
+- a `Session` component that tracks the session time, and
+- a `TimeLeft` component that will display the time left in the current session \* this component will share the data set by the `Session` component (and, in a later tutorial, the `Break` component)
+
+Now, start your development server using `npm start` and let’s get started!
+
+## Break Component
+
+### Create a New Functional Component
+
+Inside of your `/src` directory, create a `/components` directory. We’ll use this directory to keep our file structure nice and tidy.
+
+Now, inside your `/components` directory, create a new file: `Break.jsx`. Initialize the file with functional component boilerplate:
+
+```jsx
+// /src/components/Break.jsx
+import React from "react";
+
+const Break = () => {
+  return <div></div>;
+};
+
+export default Break;
+```
+
+Move the `<p id=“break-label”>Break</p>` line in `src/App.js` inside the `/src/components/Break.jsx` `<div>` element. Finally, import the `Break` component into your `App.js` file and render it in between the `<div className=“App”>` element:
+
+```jsx
+// /src/App.js
+import React from "react";
+import "./App.css";
+import Break from "./components/Break"; // import Break here
+
+function App() {
+  return (
+    <div className="App">
+      <Break />
+      {/* Add Break component here */}
+    </div>
+  );
+}
+
+export default App;
+```
+
+If you did everything correctly and visit [http://localhost:3000/](http://localhost:3000/), nothing should have changed since last time. The text _”Break”_ should be rendered in the center of your browser.
+
+### Initialize Break Length using React State (and useState)
+
+Since we’re starting with break, let’s tackle a freeCodeCamp User Story. Specifically, we’ll tackle: _”\*User Story #5: I can see an element with a corresponding id=“break-length”, which by default (on load) displays a value of 5.”_.
+
+As per the spec, we’ll render the number of minutes to the user. However, since we’ll need to use seconds when we implement the countdown feature, we’ll store the data as seconds. To store data that can be modified by the user and forces the component to re-render on change (basically, the new state will be rendered In the browser), we’ll use [React state](https://reactjs.org/docs/state-and-lifecycle.html). More specifically, we’ll use the [React state hook](https://reactjs.org/docs/hooks-state.html) in our `Break` component.
+
+The syntax for `useState()` is as follows (we’ll use `favoriteColor` as an example):
+
+```jsx
+const [
+  favoriteColor,
+  setfavoriteColor
+] = useState("red");
+```
+
+Here, `favoriteColor` is the actual variable that is initialized to `'red'`. We can change the value of `favoriteColor` by calling `setFavoriteColor` with a new string: `setFavoriteColor(‘blue’)`.
+
+Let’s add state to the `Break` component! On the first line inside `/src/components/Break.jsx`, write: `const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);` (where 300 is 5 minutes in seconds).
+
+Then, render `breakLengthInSeconds` below the existing `<p>` tag inside a `<p>` tag of its own (don’t forget `id=“break-length”`.to prepare to pass another freeCodeCamp test)!
+
+If you did everything correctly, `/src/components/Break.jsx` should look like:
+
+```jsx
+// /src/components/Break.jsx
+import React, {
+  useState
+} from "react";
+
+const Break = () => {
+  const [
+    breakLengthInSeconds,
+    setBreakLengthInSeconds
+  ] = useState(300);
+  return (
+    <div>
+      <p id="break-label">Break</p>
+      <p id="break-length">
+        {breakLengthInSeconds}
+      </p>
+    </div>
+  );
+};
+
+export default Break;
+```
+
+You’ll notice the browser renders out _”300”_ instead of the requested _”5”_. No worries, we’ll fix that later.
+
+### Add Plus & Minus Buttons with Click Event Handlers
+
+Let’s start by writing the functions that’ll be called by the plus and minus buttons, respectively. The plus button should add one minute (60 seconds) to the break length while the minus button does the opposite (without allowing the number of seconds to drop below 0). In `Break.jsx` (between declaring `setBreakLengthInSeconds` and returning the JSX), write the following two functions:
+
+```javascript
+const decrementBreakLengthByOneMinute = () => {
+  const newBreakLengthInSeconds =
+    breakLengthInSeconds - 60;
+  if (
+    newBreakLengthInSeconds < 0
+  ) {
+    setBreakLengthInSeconds(0);
+  } else {
+    setBreakLengthInSeconds(
+      newBreakLengthInSeconds
+    );
+  }
+};
+const incrementBreakLengthByOneMinute = () =>
+  setBreakLengthInSeconds(
+    breakLengthInSeconds + 60
+  );
+```
+
+To [handle events in React](https://reactjs.org/docs/handling-events.html), we need to remember to use [camel case](https://en.wikipedia.org/wiki/Camel_case) for event listener attributes in our HTML elements. For example,
+
+```jsx
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+```
+
+Notice the capital _”C”_ here.
+
+In the JSX part of `Break.jsx`, add plus and minus buttons (with the `id`s as requested in freeCodeCamp) that call the two functions we wrote above . If you did everything correctly, your `Break.jsx` should look like this:
+
+```jsx
+// src/components/Break.jsx
+import React, {
+  useState
+} from "react";
+
+const Break = () => {
+  const [
+    breakLengthInSeconds,
+    setBreakLengthInSeconds
+  ] = useState(300);
+
+  const decrementBreakLengthByOneMinute = () => {
+    const newBreakLengthInSeconds =
+      breakLengthInSeconds - 60;
+    if (
+      newBreakLengthInSeconds < 0
+    ) {
+      setBreakLengthInSeconds(0);
+    } else {
+      setBreakLengthInSeconds(
+        newBreakLengthInSeconds
+      );
+    }
+  };
+  const incrementBreakLengthByOneMinute = () =>
+    setBreakLengthInSeconds(
+      breakLengthInSeconds + 60
+    );
+  return (
+    <div>
+      <p id="break-label">Break</p>
+      <p id="break-length">
+        {breakLengthInSeconds}
+      </p>
+      <button
+        id="break-increment"
+        onClick={
+          incrementBreakLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="break-decrement"
+        onClick={
+          decrementBreakLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Break;
+```
+
+Now go back to the running app in your browser. The buttons should add and subtract 60 seconds to your break time.
+
+### Converting Seconds to Minutes using Moment.js
+
+Let’s get rid of the _”300”_ that is rendered and, instead, render the _”5”_ the was requested of us by the freeCodeCamp spec.
+
+Dealing with time is famously difficult. Sure, converting from seconds to minutes is easy enough (just divide by 60, right) but why write the code? [Moment.js](https://momentjs.com) is an spectacular library that makes dealing with time easy (and we’ll use it later in this project when displaying the time left).
+
+Let’s start by installing `moment` to our project:
+
+```bash
+npm install moment
+```
+
+We’ll use [Moment durations](http://momentjs.com/docs/#/durations/) to convert from seconds to minutes. To create a duration, the syntax is `moment.duration(timeCount, unitOfTime)`. For example, since our units are in seconds, we’ll create a direction with `moment.duration(breakLengthInSeconds, ’s’)` . To convert that into minutes, just chain a call to `.minutes()` at the end. Save this to a variable and render out that variable.
+
+```jsx
+// /src/components/Break.jsx
+
+import moment from "moment";
+import React, {
+  useState
+} from "react";
+
+const Break = () => {
+  const [
+    breakLengthInSeconds,
+    setBreakLengthInSeconds
+  ] = useState(300);
+
+  const decrementBreakLengthByOneMinute = () => {
+    const newBreakLengthInSeconds =
+      breakLengthInSeconds - 60;
+    if (
+      newBreakLengthInSeconds < 0
+    ) {
+      setBreakLengthInSeconds(0);
+    } else {
+      setBreakLengthInSeconds(
+        newBreakLengthInSeconds
+      );
+    }
+  };
+  const incrementBreakLengthByOneMinute = () =>
+    setBreakLengthInSeconds(
+      breakLengthInSeconds + 60
+    );
+
+  const breakLengthInMinutes = moment
+    .duration(
+      breakLengthInSeconds,
+      "s"
+    )
+    .minutes(); // the seconds to minutes conversion is HERE!
+  return (
+    <div>
+      <p id="break-label">Break</p>
+      {/* Note the variable change below */}
+      <p id="break-length">
+        {breakLengthInMinutes}
+      </p>
+      <button
+        id="break-increment"
+        onClick={
+          incrementBreakLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="break-decrement"
+        onClick={
+          decrementBreakLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Break;
+```
+
+You should now be passing _“User Story 5”_ in your freeCodeCamp test suite.
+
+## Session Component
+
+The session component will be in a new file (`/src/components/Session`) is almost identical to the break component with changes to variable and HTML `id` names (to match those in the freeCodeCamp test suite). Additionally, as per the freeCodeCamp test suite, the value of the initial session length should be equal to 25 minutes.
+
+`App.js`
+
+```jsx
+import React from "react";
+import "./App.css";
+import Break from "./components/Break";
+import Session from "./components/Session";
+
+function App() {
+  return (
+    <div className="App">
+      <Break />
+      <Session />
+    </div>
+  );
+}
+
+export default App;
+```
+
+`Session.jsx`
+
+```jsx
+import moment from "moment";
+import React, {
+  useState
+} from "react";
+
+const Session = () => {
+  const [
+    sessionLengthInSeconds,
+    setSessionLengthInSeconds
+  ] = useState(60 * 25);
+
+  const decrementSessionLengthByOneMinute = () => {
+    const newSessionLengthInSeconds =
+      sessionLengthInSeconds - 60;
+    if (
+      newSessionLengthInSeconds < 0
+    ) {
+      setSessionLengthInSeconds(0);
+    } else {
+      setSessionLengthInSeconds(
+        newSessionLengthInSeconds
+      );
+    }
+  };
+  const incrementSessionLengthByOneMinute = () =>
+    setSessionLengthInSeconds(
+      sessionLengthInSeconds + 60
+    );
+
+  const sessionLengthInMinutes = moment
+    .duration(
+      sessionLengthInSeconds,
+      "s"
+    )
+    .minutes();
+  return (
+    <div>
+      <p id="session-label">
+        Session
+      </p>
+      <p id="session-length">
+        {sessionLengthInMinutes}
+      </p>
+      <button
+        id="session-increment"
+        onClick={
+          incrementSessionLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="session-decrement"
+        onClick={
+          decrementSessionLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Session;
+```
+
+Open up your freeCodeCamp test suite and run the tests. You should now be passing seven tests!
+
+## You Made It! 👩‍💻 👏
+
+Way to go! You created the first two components needed for the freeCodeCamp Pomodoro Clock.
+
+If you enjoyed this tutorial, follow me at:
+
+- [Twitter](https://twitter.com/AryanJabbari)
+- [YouTube](https://www.youtube.com/c/thewebdevcoach)
+- [dev.to](https://dev.to/aryanjnyc)
+- [Instagram](https://www.instagram.com/thewebdevcoach/)
+
+If at any point you got stuck in this tutorial, please review the code on [GitHub](https://github.com/AryanJ-NYC/fcc-pomodoro-clock/tree/01-break-session).
+
+If you are interested in the freeCodeCamp Random Quote Machine implementation, please take a look at [my videos on YouTube](https://www.youtube.com/playlist?list=PL3cz80ehFCan4srLIp1HmhrQ0CU8Cw9XM).
