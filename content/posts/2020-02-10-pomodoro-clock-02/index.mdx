@@ -1,0 +1,570 @@
+---
+author: Aryan Jabbari
+title: "freeCodeCamp Pomodoro Clock 02: Lifting State Up and React Props"
+description: Learn how to use React state and props.
+date: 2020-02-10
+hero: "./img/pomodoro-02.png"
+---
+
+import StyledYouTube from "../../../src/components/StyledYouTube";
+
+# freeCodeCamp Pomodoro Clock 02: Lifting State Up and React Props
+
+This is the third installment of a tutorial series where I cover the [freeCodeCamp Pomodoro Clock project](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-pomodoro-clock). Read the [last installment](https://thewebdevcoach.com/freeCodeCamp-Pomodoro-Clock-01:-React-Functional-Components-and-Local-State-Using-Hooks) if you missed it.
+
+For those of you who like to learn using video, I’ve also created a video to complement this blog post:
+
+<StyledYouTube videoId="3RJw1V-8SUA" />
+
+## Goals
+
+By the end of this tutorial, you should:
+
+- understand _when_ to lift state up into a parent component
+- understand _how_ to lift state up into a parent component
+- use props to pass data from a _parent_ component to a _child_ component
+- Format [Moment durations] using [moment-duration-format](https://github.com/jsmreese/moment-duration-format)
+
+To achieve these goals, we’ll:
+
+- Create a `TimeLeft` component that will display the time left in `MM:SS` format in the current session or break.
+
+## Lifting State Up And React Props
+
+We want to add a component named `TimeLeft` to our `App` component that will display the time left in the current session or break. The value of TimeLeft will be initialized to either `sessionLength` or `breakLength`, which currently reside in the `Session` component and `Break` component, respectively.
+![Diagram of the current app state](https://dev-to-uploads.s3.amazonaws.com/i/4cilb9whskkzw8cww1ho.png)
+Unfortunately, we _cannot_ share data amongst sibling components. Specifically, in our case, that means that, since `Session`, `Break` and `TimeLeft` components are all children of `App` (thus considered siblings), `TimeLeft` cannot currently access `sessionLength` or `breakLength` to initialize its value:
+![](https://dev-to-uploads.s3.amazonaws.com/i/tb9rbsmgypovpnnxc3wg.png)
+However, React _does_ allow data to be passed from a parent component to its children. Specifically, in our case, we can **_lift_** `sessionLength` and `breakLength` **_up_** to the `App` component (hence the name [lift state up](https://reactjs.org/docs/lifting-state-up.html)) and pass it down to `Session`, `Break` _and_ `TimeLeft`:
+![](https://dev-to-uploads.s3.amazonaws.com/i/2d0vnev1l47wxxruyz4a.png)Now that we know _why_ we need to lift state up, let’s get to some code.
+
+We’ll begin by lifting the state up and passing `sessionLength` and `breakLength` as props to the `Session` and `Break` components, respectively. After we make these changes, the app should work just as it did before with our state now moved into the `App` component.
+
+Let’s start with the `Session` component. In `Session.jsx`, cut all the code that uses `sessionLengthInSeconds` and paste it into `App.js` (don’t forget to import `useState` in `App.js`. That is, the state and its modifiers (increment / decrement):
+
+```jsx
+// App.js
+import React, {
+  useState
+} from "react";
+import "./App.css";
+import Break from "./components/Break";
+import Session from "./components/Session";
+
+function App() {
+  const [
+    sessionLengthInSeconds,
+    setSessionLengthInSeconds
+  ] = useState(60 * 25);
+
+  const decrementSessionLengthByOneMinute = () => {
+    const newSessionLengthInSeconds =
+      sessionLengthInSeconds - 60;
+    if (
+      newSessionLengthInSeconds < 0
+    ) {
+      setSessionLengthInSeconds(0);
+    } else {
+      setSessionLengthInSeconds(
+        newSessionLengthInSeconds
+      );
+    }
+  };
+  const incrementSessionLengthByOneMinute = () =>
+    setSessionLengthInSeconds(
+      sessionLengthInSeconds + 60
+    );
+
+  return (
+    <div className="App">
+      <Break />
+      <Session />
+    </div>
+  );
+}
+
+export default App;
+```
+
+```jsx
+// Session.jsx
+import moment from "moment";
+import React from "react";
+
+const Session = () => {
+  const sessionLengthInMinutes = moment
+    .duration(
+      sessionLengthInSeconds,
+      "s"
+    )
+    .minutes();
+  return (
+    <div>
+      <p id="session-label">
+        Session
+      </p>
+      <p id="session-length">
+        {sessionLengthInMinutes}
+      </p>
+      <button
+        id="session-increment"
+        onClick={
+          incrementSessionLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="session-decrement"
+        onClick={
+          decrementSessionLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Session;
+```
+
+You should see red squiggles in `Session.jsx` at the moment. Our IDE (editor) is telling us that it has no clue what the variables `sessionLengthInSeconds,` `incrementSessionLengthByOneMinute`, `decrementSessionLengthByOneMinute` are. We’ll pass these variables from `App.js` into `Session.jsx` using props:
+
+```jsx
+// App.js
+import React, {
+  useState
+} from "react";
+import "./App.css";
+import Break from "./components/Break";
+import Session from "./components/Session";
+
+function App() {
+  const [
+    sessionLengthInSeconds,
+    setSessionLengthInSeconds
+  ] = useState(60 * 25);
+
+  const decrementSessionLengthByOneMinute = () => {
+    const newSessionLengthInSeconds =
+      sessionLengthInSeconds - 60;
+    if (
+      newSessionLengthInSeconds < 0
+    ) {
+      setSessionLengthInSeconds(0);
+    } else {
+      setSessionLengthInSeconds(
+        newSessionLengthInSeconds
+      );
+    }
+  };
+  const incrementSessionLengthByOneMinute = () =>
+    setSessionLengthInSeconds(
+      sessionLengthInSeconds + 60
+    );
+
+  return (
+    <div className="App">
+      <Break />
+      {/* pass props below! */}
+      <Session
+        sessionLengthInSeconds={
+          sessionLengthInSeconds
+        }
+        incrementSessionLengthByOneMinute={
+          incrementSessionLengthByOneMinute
+        }
+        decrementSessionLengthByOneMinute={
+          decrementSessionLengthByOneMinute
+        }
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+In `Session.jsx`, we must accept these props by declaring them as parameters to our functional component:
+
+```jsx
+// Session.jsx
+import moment from "moment";
+import React from "react";
+
+const Session = ({
+  sessionLengthInSeconds, // this is where we accept the props
+  incrementSessionLengthByOneMinute,
+  decrementSessionLengthByOneMinute
+}) => {
+  const sessionLengthInMinutes = moment
+    .duration(
+      sessionLengthInSeconds,
+      "s"
+    )
+    .minutes();
+  return (
+    <div>
+      <p id="session-label">
+        Session
+      </p>
+      <p id="session-length">
+        {sessionLengthInMinutes}
+      </p>
+      <button
+        id="session-increment"
+        onClick={
+          incrementSessionLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="session-decrement"
+        onClick={
+          decrementSessionLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Session;
+```
+
+If everything was done correctly, the app should work just as it did before. Now, take a few minutes and lift the `Break` component’s state up by yourself.
+
+All done? `App.js` and `Break.jsx` should look as follows:
+
+```jsx
+// App.js
+import React, {
+  useState
+} from "react";
+import "./App.css";
+import Break from "./components/Break";
+import Session from "./components/Session";
+
+function App() {
+  const [
+    breakLengthInSeconds,
+    setBreakLengthInSeconds
+  ] = useState(300);
+  const [
+    sessionLengthInSeconds,
+    setSessionLengthInSeconds
+  ] = useState(60 * 25);
+
+  const decrementBreakLengthByOneMinute = () => {
+    const newBreakLengthInSeconds =
+      breakLengthInSeconds - 60;
+    if (
+      newBreakLengthInSeconds < 0
+    ) {
+      setBreakLengthInSeconds(0);
+    } else {
+      setBreakLengthInSeconds(
+        newBreakLengthInSeconds
+      );
+    }
+  };
+  const incrementBreakLengthByOneMinute = () =>
+    setBreakLengthInSeconds(
+      breakLengthInSeconds + 60
+    );
+
+  const decrementSessionLengthByOneMinute = () => {
+    const newSessionLengthInSeconds =
+      sessionLengthInSeconds - 60;
+    if (
+      newSessionLengthInSeconds < 0
+    ) {
+      setSessionLengthInSeconds(0);
+    } else {
+      setSessionLengthInSeconds(
+        newSessionLengthInSeconds
+      );
+    }
+  };
+  const incrementSessionLengthByOneMinute = () =>
+    setSessionLengthInSeconds(
+      sessionLengthInSeconds + 60
+    );
+
+  return (
+    <div className="App">
+      <Break
+        breakLengthInSeconds={
+          breakLengthInSeconds
+        }
+        incrementBreakLengthByOneMinute={
+          incrementBreakLengthByOneMinute
+        }
+        decrementBreakLengthByOneMinute={
+          decrementBreakLengthByOneMinute
+        }
+      />
+      <Session
+        sessionLengthInSeconds={
+          sessionLengthInSeconds
+        }
+        incrementSessionLengthByOneMinute={
+          incrementSessionLengthByOneMinute
+        }
+        decrementSessionLengthByOneMinute={
+          decrementSessionLengthByOneMinute
+        }
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+```jsx
+// Break.jsx
+import moment from "moment";
+import React from "react";
+
+const Break = ({
+  breakLengthInSeconds,
+  incrementBreakLengthByOneMinute,
+  decrementBreakLengthByOneMinute
+}) => {
+  const breakLengthInMinutes = moment
+    .duration(
+      breakLengthInSeconds,
+      "s"
+    )
+    .minutes();
+  return (
+    <div>
+      <p id="break-label">Break</p>
+      <p id="break-length">
+        {breakLengthInMinutes}
+      </p>
+      <button
+        id="break-increment"
+        onClick={
+          incrementBreakLengthByOneMinute
+        }
+      >
+        +
+      </button>
+      <button
+        id="break-decrement"
+        onClick={
+          decrementBreakLengthByOneMinute
+        }
+      >
+        -
+      </button>
+    </div>
+  );
+};
+
+export default Break;
+```
+
+## TimeLeft Component
+
+Great, we’re ready to create our `TimeLeft` component and initialize its value.
+
+In your `components` directory, create and export an empty component named `TimeLeft`. Then, import this component in `App.js` and render it between `<Break />` and `<Session />`.
+
+Now, that you’ve done that, pass `sessionLengthInSeconds` (we’ll use it to initialize the `timeLeft` in our `TimeLeft` component) from the `App` component to the `TimeLeft` component.
+
+Lastly, accept these props in `TimeLeft`. Use the `sessionLengthInSeconds` prop to initialize a new state (remember `useState`?) variable called `timeLeft`. Render out `timeLeft` in a `<p>` tag with the `id` “time-left”.
+
+You should be able to all this by yourself with everything you’ve learned up to this point in this tutorial series. I strongly suggest you stop here and try all this yourself before going on and seeing the answer below.
+
+Here’s what that looks like:
+
+```jsx
+// components/TimeLeft.jsx
+import React from "react";
+import { useState } from "react";
+
+const TimeLeft = ({
+  sessionLengthInSeconds
+}) => {
+  const [timeLeft] = useState(
+    sessionLengthInSeconds
+  );
+
+  return (
+    <p id="time-left">
+      {timeLeft}
+    </p>
+  );
+};
+
+export default TimeLeft;
+```
+
+```jsx
+// App.js
+import React, {
+  useState
+} from "react";
+import "./App.css";
+import Break from "./components/Break";
+import Session from "./components/Session";
+import TimeLeft from "./components/TimeLeft";
+
+function App() {
+  const [
+    breakLengthInSeconds,
+    setBreakLengthInSeconds
+  ] = useState(300);
+  const [
+    sessionLengthInSeconds,
+    setSessionLengthInSeconds
+  ] = useState(60 * 25);
+
+  const decrementBreakLengthByOneMinute = () => {
+    const newBreakLengthInSeconds =
+      breakLengthInSeconds - 60;
+    if (
+      newBreakLengthInSeconds < 0
+    ) {
+      setBreakLengthInSeconds(0);
+    } else {
+      setBreakLengthInSeconds(
+        newBreakLengthInSeconds
+      );
+    }
+  };
+  const incrementBreakLengthByOneMinute = () =>
+    setBreakLengthInSeconds(
+      breakLengthInSeconds + 60
+    );
+
+  const decrementSessionLengthByOneMinute = () => {
+    const newSessionLengthInSeconds =
+      sessionLengthInSeconds - 60;
+    if (
+      newSessionLengthInSeconds < 0
+    ) {
+      setSessionLengthInSeconds(0);
+    } else {
+      setSessionLengthInSeconds(
+        newSessionLengthInSeconds
+      );
+    }
+  };
+  const incrementSessionLengthByOneMinute = () =>
+    setSessionLengthInSeconds(
+      sessionLengthInSeconds + 60
+    );
+
+  return (
+    <div className="App">
+      <Break
+        breakLengthInSeconds={
+          breakLengthInSeconds
+        }
+        incrementBreakLengthByOneMinute={
+          incrementBreakLengthByOneMinute
+        }
+        decrementBreakLengthByOneMinute={
+          decrementBreakLengthByOneMinute
+        }
+      />
+      <TimeLeft
+        sessionLengthInSeconds={
+          sessionLengthInSeconds
+        }
+      />
+      <Session
+        sessionLengthInSeconds={
+          sessionLengthInSeconds
+        }
+        incrementSessionLengthByOneMinute={
+          incrementSessionLengthByOneMinute
+        }
+        decrementSessionLengthByOneMinute={
+          decrementSessionLengthByOneMinute
+        }
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Well done! If you did everything correct, the `TimeLeft` component should render out the time left…but in seconds. We should format this in `MM:SS` format, as per the freeCodeCamp spec. But how? 🤔
+
+### Formatting Moment Durations to MM:SS Format
+
+To format Moment durations, we’ll use the [`moment-duration-format`](https://github.com/jsmreese/moment-duration-format) plugin. First, let’s install the package:
+
+```bash
+npm install moment-duration-format
+```
+
+To “plug in” the plugin, do the following in `TimeLeft.jsx`:
+
+```jsx
+// TimeLeft.jsx
+import moment from "moment";
+import momentDurationFormatSetup from "moment-duration-format";
+import React from "react";
+import { useState } from "react";
+
+momentDurationFormatSetup(moment);
+// ... the rest of your component here
+```
+
+With that done, we’re ready to format the component. As per the [`moment-duration-format` documentation](https://github.com/jsmreese/moment-duration-format#basics), we’ll simply create a duration from `timeLeft`, add call the `format()` function with a format string argument and render out the return value:
+
+```jsx
+// TimeLeft.jsx
+import moment from "moment";
+import momentDurationFormatSetup from "moment-duration-format";
+import React from "react";
+import { useState } from "react";
+
+momentDurationFormatSetup(moment);
+
+const TimeLeft = ({
+  sessionLengthInSeconds
+}) => {
+  const [timeLeft] = useState(
+    sessionLengthInSeconds
+  );
+
+  const formattedTimeLeft = moment
+    .duration(timeLeft, "s")
+    .format("mm:ss");
+  return (
+    <p id="time-left">
+      {formattedTimeLeft}
+    </p>
+  );
+};
+
+export default TimeLeft;
+```
+
+Note that `moment.duration(timeLeft, ’s’)` is almost identical to the code we have in `Break.jsx` and `Session.jsx`. It simply creates a [Moment duration](https://momentjs.com/docs/#/durations/). The only _new_ part of this is the `format` function and the [format template string argument](https://github.com/jsmreese/moment-duration-format#template-string).
+
+## 👏 You Made It! 👏
+
+You’ve taken steps towards completing the freeCodeCamp Pomodoro Clock project and now know how to pass props to components and lift state up.
+
+If you enjoyed this tutorial, follow me on:
+
+- [Twitter](https://twitter.com/AryanJabbari)
+- [YouTube](https://www.youtube.com/c/thewebdevcoach)
+- [dev.to](https://dev.to/aryanjnyc)
+- [Instagram](https://www.instagram.com/thewebdevcoach/)
+
+If at any point you got stuck in this tutorial, please review the code on [GitHub](https://github.com/AryanJ-NYC/fcc-pomodoro-clock/tree/02-lift-state-up).
+
+If you are interested in the freeCodeCamp Random Quote Machine implementation, please take a look at [my videos on YouTube](https://www.youtube.com/playlist?list=PL3cz80ehFCan4srLIp1HmhrQ0CU8Cw9XM).
