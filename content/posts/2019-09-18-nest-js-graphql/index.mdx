@@ -6,7 +6,7 @@ date: 2019-09-18
 hero: ./img/nestjs-ts-graphql.jpg
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # Stand Up a Node.js Server with NestJS including TypeScript and GraphQL
 
@@ -83,28 +83,23 @@ npm i --save @nestjs/graphql apollo-server-express graphql-tools graphql
 With these packages installed, register the `GraphQLModule` in `/src/app.module.ts`:
 
 ```typescript
-import { Module } from "@nestjs/common";
-import { GraphQLModule } from "@nestjs/graphql";
-import { join } from "path";
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       definitions: {
-        path: join(
-          process.cwd(),
-          "/src/graphql.schema.d.ts"
-        ),
-        outputAs: "class"
+        path: join(process.cwd(), '/src/graphql.schema.d.ts'),
+        outputAs: 'class',
       },
-      typePaths: [
-        "./**/*.graphql"
-      ],
+      typePaths: ['./**/*.graphql'],
       resolverValidationOptions: {
-        requireResolversForResolveType: false
-      }
-    })
-  ]
+        requireResolversForResolveType: false,
+      },
+    }),
+  ],
 })
 export class AppModule {}
 ```
@@ -140,9 +135,7 @@ type Query {
 }
 
 type Mutation {
-  createMessage(
-    description: String!
-  ): Message!
+  createMessage(description: String!): Message!
 }
 ```
 
@@ -161,10 +154,7 @@ This will import the `MessagesModule` into `AppModule` and create a new `src/mes
 Now, let's create that resolver. We'll create a dummy variable named `messagesThatReallyShouldBeInADb` that will function as our database and store all the messages and a GraphQL query that returns all the messages. In `src/messages/messages.resolver.ts`:
 
 ```typescript
-import {
-  Resolver,
-  Query
-} from "@nestjs/graphql";
+import { Resolver, Query } from '@nestjs/graphql';
 
 @Resolver()
 export class MessagesResolver {
@@ -174,15 +164,13 @@ export class MessagesResolver {
   messagesThatReallyShouldBeInADb = [
     {
       id: 0,
-      description:
-        "The seed message"
-    }
+      description: 'The seed message',
+    },
   ];
 
   @Query()
   messages() {
-    return this
-      .messagesThatReallyShouldBeInADb;
+    return this.messagesThatReallyShouldBeInADb;
   }
 }
 ```
@@ -190,12 +178,12 @@ export class MessagesResolver {
 Note the decorators NestJS provides us (`Resolver` and `Query`). This automagically maps to the `messages` query that we declared in `src/schema.graphql`. We must now provide this resolver to the `MessagesModule`. In `src/messages.module.ts`:
 
 ```typescript
-import { Module } from "@nestjs/common";
-import { MessagesResolver } from "./messages.resolver";
+import { Module } from '@nestjs/common';
+import { MessagesResolver } from './messages.resolver';
 
 @Module({
   providers: [MessagesResolver],
-  exports: [MessagesResolver]
+  exports: [MessagesResolver],
 })
 export class MessagesModule {}
 ```
@@ -211,17 +199,12 @@ Go to [http://localhost:3000/graphql](http://localhost:3000/graphql), refresh th
 ```
 
 If everything was done correctly, you should see the seed message:
-![GraphQL playground with the messages query and the returned messages array with the seed message](./img/graphql-playground.png "GraphQL Playground")
+![GraphQL playground with the messages query and the returned messages array with the seed message](./img/graphql-playground.png 'GraphQL Playground')
 
 Now let's add the `createMessage` mutation to `src/messages/messages.resolver.ts`. Remember the [resolver type signature takes four arguments `(parent, args, context, info)`](https://www.apollographql.com/docs/apollo-server/data/data/#resolver-type-signature). NestJS provides decorators for each argument. For this specific mutation, we use the `@Args()` decorator and pass it the name of the argument we want to access (`description`):
 
 ```typescript
-import {
-  Mutation,
-  Resolver,
-  Query,
-  Args
-} from "@nestjs/graphql";
+import { Mutation, Resolver, Query, Args } from '@nestjs/graphql';
 
 @Resolver()
 export class MessagesResolver {
@@ -231,32 +214,26 @@ export class MessagesResolver {
   messagesThatReallyShouldBeInADb = [
     {
       id: 0,
-      description:
-        "The seed message"
-    }
+      description: 'The seed message',
+    },
   ];
 
   @Query()
   messages() {
-    return this
-      .messagesThatReallyShouldBeInADb;
+    return this.messagesThatReallyShouldBeInADb;
   }
 
   @Mutation()
   createMessage(
-    @Args("description")
+    @Args('description')
     description: string
   ) {
-    const id = this
-      .messagesThatReallyShouldBeInADb
-      .length;
+    const id = this.messagesThatReallyShouldBeInADb.length;
     const newMessage = {
       id,
-      description
+      description,
     };
-    this.messagesThatReallyShouldBeInADb.push(
-      newMessage
-    );
+    this.messagesThatReallyShouldBeInADb.push(newMessage);
     return newMessage;
   }
 }
@@ -273,7 +250,7 @@ mutation {
 ```
 
 which should successfully return:
-![GraphQL playground with the messages mutation and the returned message](./img/witty-mutation.png "GraphQL Playground")
+![GraphQL playground with the messages mutation and the returned message](./img/witty-mutation.png 'GraphQL Playground')
 
 Feel free to create a few messages using our new mutation and query for all messages.
 

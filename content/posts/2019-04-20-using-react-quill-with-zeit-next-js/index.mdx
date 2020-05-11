@@ -9,6 +9,7 @@ tags:
   - next.js
   - quill.js
 ---
+
 I decided to use [React Quill](https://github.com/zenoamaro/react-quill) for a [Next.js](https://nextjs.org) application I am working on. My goal is to add a Medium-like text editor to my application. I will use the [Cloning Medium with Parchment](https://quilljs.com/guides/cloning-medium-with-parchment/) blog post as a guide to achieve my goal. However, for now, let's get started with adding [React Quill](https://github.com/zenoamaro/react-quill) to a [Next.js](https://nextjs.org) project.
 
 # Styles
@@ -18,7 +19,7 @@ Styling [React Quill](https://github.com/zenoamaro/react-quill) involves [import
 _Meta.tsx_
 
 ```ts
-import Head from "next/head";
+import Head from 'next/head';
 
 const Meta = () => (
   <Head>
@@ -34,8 +35,8 @@ export default Meta;
 _Page.tsx_
 
 ```ts
-import React, { Component } from "react";
-import Meta from "./Meta";
+import React, { Component } from 'react';
+import Meta from './Meta';
 
 export default class Page extends Component {
   render() {
@@ -52,14 +53,12 @@ export default class Page extends Component {
 _\_app.tsx_
 
 ```ts
-import App, { Container, NextAppContext } from "next/app";
-import Page from "../components/Page";
+import App, { Container, NextAppContext } from 'next/app';
+import Page from '../components/Page';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: NextAppContext) {
-    const pageProps = Component.getInitialProps
-      ? await Component.getInitialProps(ctx)
-      : {};
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
     // this exposes the query to the user
     pageProps.query = ctx.query;
     return { pageProps };
@@ -87,7 +86,7 @@ I had to account for [Next.js](https://nextjs.org)' use of server-side rendering
 _TitleInput.tsx_
 
 ```ts
-import { Component } from "react";
+import { Component } from 'react';
 
 type TitleInputProps = {
   postTitle: string;
@@ -98,21 +97,18 @@ export default class TitleInput extends Component<TitleInputProps> {
   ReactQuill: any;
   constructor(props: TitleInputProps) {
     super(props);
-    if (typeof window !== "undefined") {
-      this.ReactQuill = require("react-quill");
+    if (typeof window !== 'undefined') {
+      this.ReactQuill = require('react-quill');
     }
   }
 
   render() {
     const ReactQuill = this.ReactQuill;
     const { postTitle, setPostTitle } = this.props;
-    return typeof window !== "undefined" && ReactQuill ? (
+    return typeof window !== 'undefined' && ReactQuill ? (
       <label>
         Title
-        <ReactQuill
-          value={postTitle}
-          onChange={(content: string) => setPostTitle(content)}
-        />
+        <ReactQuill value={postTitle} onChange={(content: string) => setPostTitle(content)} />
       </label>
     ) : null;
   }

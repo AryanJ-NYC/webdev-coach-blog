@@ -1,12 +1,12 @@
 ---
 author: Aryan Jabbari
-title:  "freeCodeCamp Pomodoro Clock 00: create-react-app Development Environment"
-description:  Set up your React development environment for your freeCodeCamp Pomodoro Clock
+title: 'freeCodeCamp Pomodoro Clock 00: create-react-app Development Environment'
+description: Set up your React development environment for your freeCodeCamp Pomodoro Clock
 date: 2020-01-19
-hero: "./img/pomodoro-00.png"
+hero: './img/pomodoro-00.png'
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # freeCodeCamp Pomodoro Clock 00: create-react-app Development Environment
 
@@ -15,6 +15,7 @@ Congratulations on getting this far in your coding journey! You tackled HTML, CS
 This tutorial is the first installment of a tutorial series where I cover the [freeCodeCamp Pomodoro Clock project](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-pomodoro-clock). I’ll be following the spec pretty closely including passing 100% of the tests in the freeCodeCamp test suite.
 
 In this tutorial _series_, we’ll:
+
 - Stand up a new React application using [create-react-app](https://create-react-app.dev/)
 - Integrate the freeCodeCamp test suite tool
 - Build the freeCodeCamp Pomodoro Clock using React
@@ -80,38 +81,16 @@ We’ll link to the JavaScript script above right _before_ the closing `<html>` 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link
-      rel="icon"
-      href="%PUBLIC_URL%/favicon.ico"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-    <meta
-      name="theme-color"
-      content="#000000"
-    />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="%PUBLIC_URL%/logo192.png"
-    />
-    <link
-      rel="manifest"
-      href="%PUBLIC_URL%/manifest.json"
-    />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
   </head>
   <body>
-    <noscript
-      >You need to enable
-      JavaScript to run this
-      app.</noscript
-    >
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
   <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
@@ -133,8 +112,8 @@ I’ll delete most of `App.js` and insert the `<p>` element with a string that r
 
 ```javascript
 // src/App.js
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
 function App() {
   return (

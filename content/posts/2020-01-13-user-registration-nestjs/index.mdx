@@ -6,7 +6,7 @@ date: 2020-01-13
 hero: ./img/user-registration-with-nestjs-graphql-prisma.jpg
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # User Registration with a NestJS GraphQL Server and Prisma
 
@@ -109,13 +109,13 @@ The first thing we need to do is inject the Prisma service into our User service
 
 ```typescript
 // src/users/users.module.ts
-import { Module } from "@nestjs/common";
-import { UsersService } from "./users.service";
-import { PrismaModule } from "src/prisma/prisma.module";
+import { Module } from '@nestjs/common';
+import { UsersService } from './users.service';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
-  providers: [UsersService]
+  providers: [UsersService],
 })
 export class UsersModule {}
 ```
@@ -123,14 +123,12 @@ export class UsersModule {}
 With the `PrismaModule` imported, we can inject it into our User service. Open `src/users/users.service.ts` and inject the `PrismaModule`:
 
 ```typescript
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly prisma: PrismaService
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 }
 ```
 
@@ -153,36 +151,26 @@ yarn add -D @types/bcrypt
 The `createUser` function should be added to `src/users/users.service.ts` as follows:
 
 ```typescript
-import { Injectable } from "@nestjs/common";
-import * as bcrypt from "bcrypt";
-import { PrismaService } from "src/prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly prisma: PrismaService
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async createUser(
-    email: string,
-    password: string
-  ) {
+  async createUser(email: string, password: string) {
     // remove any case sensitivity from our email address
     const lowerCaseEmail = email.toLowerCase();
     // hash the password
-    const hashedPassword = await bcrypt.hash(
-      password,
-      10
-    );
+    const hashedPassword = await bcrypt.hash(password, 10);
     // sabe the user
-    const user = this.prisma.mutation.createUser(
-      {
-        data: {
-          email: lowerCaseEmail,
-          password: hashedPassword
-        }
-      }
-    );
+    const user = this.prisma.mutation.createUser({
+      data: {
+        email: lowerCaseEmail,
+        password: hashedPassword,
+      },
+    });
     // return the newly saved user
     return user;
   }
@@ -192,31 +180,22 @@ export class UsersService {
 Perfect, now let’s use this service in our User resolver to write the `createUser` mutation. With the `createUser` function in our User /service/ doing most of the heavy lifting, the resolver is as easy as calling the service and returning the user. In `src/users/users.resolver.ts`:
 
 ```typescript
-import {
-  Resolver,
-  Mutation,
-  Args
-} from "@nestjs/graphql";
-import { UsersService } from "./users.service";
+import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { UsersService } from './users.service';
 
-@Resolver("Users")
+@Resolver('Users')
 export class UsersResolver {
-  constructor(
-    private readonly users: UsersService
-  ) {}
+  constructor(private readonly users: UsersService) {}
 
   @Mutation()
   async createUser(
-    @Args("data")
+    @Args('data')
     data: {
       email: string;
       password: string;
     }
   ) {
-    const user = await this.users.createUser(
-      data.email,
-      data.password
-    );
+    const user = await this.users.createUser(data.email, data.password);
     return user;
   }
 }
@@ -236,12 +215,7 @@ After it’s finished starting up, go to [http://localhost:3000/graphql](http://
 
 ```graphql
 mutation {
-  createUser(
-    data: {
-      email: "test@test.com"
-      password: "test"
-    }
-  ) {
+  createUser(data: { email: "test@test.com", password: "test" }) {
     id
     email
     password

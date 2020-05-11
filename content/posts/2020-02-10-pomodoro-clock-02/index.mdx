@@ -1,12 +1,12 @@
 ---
 author: Aryan Jabbari
-title: "freeCodeCamp Pomodoro Clock 02: Lifting State Up and React Props"
+title: 'freeCodeCamp Pomodoro Clock 02: Lifting State Up and React Props'
 description: Learn how to use React state and props.
 date: 2020-02-10
-hero: "./img/pomodoro-02.png"
+hero: './img/pomodoro-02.png'
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # freeCodeCamp Pomodoro Clock 02: Lifting State Up and React Props
 
@@ -44,36 +44,24 @@ Let’s start with the `Session` component. In `Session.jsx`, cut all the code t
 
 ```jsx
 // App.js
-import React, {
-  useState
-} from "react";
-import "./App.css";
-import Break from "./components/Break";
-import Session from "./components/Session";
+import React, { useState } from 'react';
+import './App.css';
+import Break from './components/Break';
+import Session from './components/Session';
 
 function App() {
-  const [
-    sessionLengthInSeconds,
-    setSessionLengthInSeconds
-  ] = useState(60 * 25);
+  const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLengthInSeconds =
-      sessionLengthInSeconds - 60;
-    if (
-      newSessionLengthInSeconds < 0
-    ) {
+    const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
+    if (newSessionLengthInSeconds < 0) {
       setSessionLengthInSeconds(0);
     } else {
-      setSessionLengthInSeconds(
-        newSessionLengthInSeconds
-      );
+      setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
   const incrementSessionLengthByOneMinute = () =>
-    setSessionLengthInSeconds(
-      sessionLengthInSeconds + 60
-    );
+    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
 
   return (
     <div className="App">
@@ -88,38 +76,19 @@ export default App;
 
 ```jsx
 // Session.jsx
-import moment from "moment";
-import React from "react";
+import moment from 'moment';
+import React from 'react';
 
 const Session = () => {
-  const sessionLengthInMinutes = moment
-    .duration(
-      sessionLengthInSeconds,
-      "s"
-    )
-    .minutes();
+  const sessionLengthInMinutes = moment.duration(sessionLengthInSeconds, 's').minutes();
   return (
     <div>
-      <p id="session-label">
-        Session
-      </p>
-      <p id="session-length">
-        {sessionLengthInMinutes}
-      </p>
-      <button
-        id="session-increment"
-        onClick={
-          incrementSessionLengthByOneMinute
-        }
-      >
+      <p id="session-label">Session</p>
+      <p id="session-length">{sessionLengthInMinutes}</p>
+      <button id="session-increment" onClick={incrementSessionLengthByOneMinute}>
         +
       </button>
-      <button
-        id="session-decrement"
-        onClick={
-          decrementSessionLengthByOneMinute
-        }
-      >
+      <button id="session-decrement" onClick={decrementSessionLengthByOneMinute}>
         -
       </button>
     </div>
@@ -133,51 +102,33 @@ You should see red squiggles in `Session.jsx` at the moment. Our IDE (editor) is
 
 ```jsx
 // App.js
-import React, {
-  useState
-} from "react";
-import "./App.css";
-import Break from "./components/Break";
-import Session from "./components/Session";
+import React, { useState } from 'react';
+import './App.css';
+import Break from './components/Break';
+import Session from './components/Session';
 
 function App() {
-  const [
-    sessionLengthInSeconds,
-    setSessionLengthInSeconds
-  ] = useState(60 * 25);
+  const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLengthInSeconds =
-      sessionLengthInSeconds - 60;
-    if (
-      newSessionLengthInSeconds < 0
-    ) {
+    const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
+    if (newSessionLengthInSeconds < 0) {
       setSessionLengthInSeconds(0);
     } else {
-      setSessionLengthInSeconds(
-        newSessionLengthInSeconds
-      );
+      setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
   const incrementSessionLengthByOneMinute = () =>
-    setSessionLengthInSeconds(
-      sessionLengthInSeconds + 60
-    );
+    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
 
   return (
     <div className="App">
       <Break />
       {/* pass props below! */}
       <Session
-        sessionLengthInSeconds={
-          sessionLengthInSeconds
-        }
-        incrementSessionLengthByOneMinute={
-          incrementSessionLengthByOneMinute
-        }
-        decrementSessionLengthByOneMinute={
-          decrementSessionLengthByOneMinute
-        }
+        sessionLengthInSeconds={sessionLengthInSeconds}
+        incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
+        decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
       />
     </div>
   );
@@ -190,42 +141,23 @@ In `Session.jsx`, we must accept these props by declaring them as parameters to 
 
 ```jsx
 // Session.jsx
-import moment from "moment";
-import React from "react";
+import moment from 'moment';
+import React from 'react';
 
 const Session = ({
   sessionLengthInSeconds, // this is where we accept the props
   incrementSessionLengthByOneMinute,
-  decrementSessionLengthByOneMinute
+  decrementSessionLengthByOneMinute,
 }) => {
-  const sessionLengthInMinutes = moment
-    .duration(
-      sessionLengthInSeconds,
-      "s"
-    )
-    .minutes();
+  const sessionLengthInMinutes = moment.duration(sessionLengthInSeconds, 's').minutes();
   return (
     <div>
-      <p id="session-label">
-        Session
-      </p>
-      <p id="session-length">
-        {sessionLengthInMinutes}
-      </p>
-      <button
-        id="session-increment"
-        onClick={
-          incrementSessionLengthByOneMinute
-        }
-      >
+      <p id="session-label">Session</p>
+      <p id="session-length">{sessionLengthInMinutes}</p>
+      <button id="session-increment" onClick={incrementSessionLengthByOneMinute}>
         +
       </button>
-      <button
-        id="session-decrement"
-        onClick={
-          decrementSessionLengthByOneMinute
-        }
-      >
+      <button id="session-decrement" onClick={decrementSessionLengthByOneMinute}>
         -
       </button>
     </div>
@@ -241,82 +173,47 @@ All done? `App.js` and `Break.jsx` should look as follows:
 
 ```jsx
 // App.js
-import React, {
-  useState
-} from "react";
-import "./App.css";
-import Break from "./components/Break";
-import Session from "./components/Session";
+import React, { useState } from 'react';
+import './App.css';
+import Break from './components/Break';
+import Session from './components/Session';
 
 function App() {
-  const [
-    breakLengthInSeconds,
-    setBreakLengthInSeconds
-  ] = useState(300);
-  const [
-    sessionLengthInSeconds,
-    setSessionLengthInSeconds
-  ] = useState(60 * 25);
+  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
+  const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
 
   const decrementBreakLengthByOneMinute = () => {
-    const newBreakLengthInSeconds =
-      breakLengthInSeconds - 60;
-    if (
-      newBreakLengthInSeconds < 0
-    ) {
+    const newBreakLengthInSeconds = breakLengthInSeconds - 60;
+    if (newBreakLengthInSeconds < 0) {
       setBreakLengthInSeconds(0);
     } else {
-      setBreakLengthInSeconds(
-        newBreakLengthInSeconds
-      );
+      setBreakLengthInSeconds(newBreakLengthInSeconds);
     }
   };
-  const incrementBreakLengthByOneMinute = () =>
-    setBreakLengthInSeconds(
-      breakLengthInSeconds + 60
-    );
+  const incrementBreakLengthByOneMinute = () => setBreakLengthInSeconds(breakLengthInSeconds + 60);
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLengthInSeconds =
-      sessionLengthInSeconds - 60;
-    if (
-      newSessionLengthInSeconds < 0
-    ) {
+    const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
+    if (newSessionLengthInSeconds < 0) {
       setSessionLengthInSeconds(0);
     } else {
-      setSessionLengthInSeconds(
-        newSessionLengthInSeconds
-      );
+      setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
   const incrementSessionLengthByOneMinute = () =>
-    setSessionLengthInSeconds(
-      sessionLengthInSeconds + 60
-    );
+    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
 
   return (
     <div className="App">
       <Break
-        breakLengthInSeconds={
-          breakLengthInSeconds
-        }
-        incrementBreakLengthByOneMinute={
-          incrementBreakLengthByOneMinute
-        }
-        decrementBreakLengthByOneMinute={
-          decrementBreakLengthByOneMinute
-        }
+        breakLengthInSeconds={breakLengthInSeconds}
+        incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
+        decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
       />
       <Session
-        sessionLengthInSeconds={
-          sessionLengthInSeconds
-        }
-        incrementSessionLengthByOneMinute={
-          incrementSessionLengthByOneMinute
-        }
-        decrementSessionLengthByOneMinute={
-          decrementSessionLengthByOneMinute
-        }
+        sessionLengthInSeconds={sessionLengthInSeconds}
+        incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
+        decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
       />
     </div>
   );
@@ -327,40 +224,23 @@ export default App;
 
 ```jsx
 // Break.jsx
-import moment from "moment";
-import React from "react";
+import moment from 'moment';
+import React from 'react';
 
 const Break = ({
   breakLengthInSeconds,
   incrementBreakLengthByOneMinute,
-  decrementBreakLengthByOneMinute
+  decrementBreakLengthByOneMinute,
 }) => {
-  const breakLengthInMinutes = moment
-    .duration(
-      breakLengthInSeconds,
-      "s"
-    )
-    .minutes();
+  const breakLengthInMinutes = moment.duration(breakLengthInSeconds, 's').minutes();
   return (
     <div>
       <p id="break-label">Break</p>
-      <p id="break-length">
-        {breakLengthInMinutes}
-      </p>
-      <button
-        id="break-increment"
-        onClick={
-          incrementBreakLengthByOneMinute
-        }
-      >
+      <p id="break-length">{breakLengthInMinutes}</p>
+      <button id="break-increment" onClick={incrementBreakLengthByOneMinute}>
         +
       </button>
-      <button
-        id="break-decrement"
-        onClick={
-          decrementBreakLengthByOneMinute
-        }
-      >
+      <button id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
         -
       </button>
     </div>
@@ -386,21 +266,13 @@ Here’s what that looks like:
 
 ```jsx
 // components/TimeLeft.jsx
-import React from "react";
-import { useState } from "react";
+import React from 'react';
+import { useState } from 'react';
 
-const TimeLeft = ({
-  sessionLengthInSeconds
-}) => {
-  const [timeLeft] = useState(
-    sessionLengthInSeconds
-  );
+const TimeLeft = ({ sessionLengthInSeconds }) => {
+  const [timeLeft] = useState(sessionLengthInSeconds);
 
-  return (
-    <p id="time-left">
-      {timeLeft}
-    </p>
-  );
+  return <p id="time-left">{timeLeft}</p>;
 };
 
 export default TimeLeft;
@@ -408,88 +280,49 @@ export default TimeLeft;
 
 ```jsx
 // App.js
-import React, {
-  useState
-} from "react";
-import "./App.css";
-import Break from "./components/Break";
-import Session from "./components/Session";
-import TimeLeft from "./components/TimeLeft";
+import React, { useState } from 'react';
+import './App.css';
+import Break from './components/Break';
+import Session from './components/Session';
+import TimeLeft from './components/TimeLeft';
 
 function App() {
-  const [
-    breakLengthInSeconds,
-    setBreakLengthInSeconds
-  ] = useState(300);
-  const [
-    sessionLengthInSeconds,
-    setSessionLengthInSeconds
-  ] = useState(60 * 25);
+  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
+  const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
 
   const decrementBreakLengthByOneMinute = () => {
-    const newBreakLengthInSeconds =
-      breakLengthInSeconds - 60;
-    if (
-      newBreakLengthInSeconds < 0
-    ) {
+    const newBreakLengthInSeconds = breakLengthInSeconds - 60;
+    if (newBreakLengthInSeconds < 0) {
       setBreakLengthInSeconds(0);
     } else {
-      setBreakLengthInSeconds(
-        newBreakLengthInSeconds
-      );
+      setBreakLengthInSeconds(newBreakLengthInSeconds);
     }
   };
-  const incrementBreakLengthByOneMinute = () =>
-    setBreakLengthInSeconds(
-      breakLengthInSeconds + 60
-    );
+  const incrementBreakLengthByOneMinute = () => setBreakLengthInSeconds(breakLengthInSeconds + 60);
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLengthInSeconds =
-      sessionLengthInSeconds - 60;
-    if (
-      newSessionLengthInSeconds < 0
-    ) {
+    const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
+    if (newSessionLengthInSeconds < 0) {
       setSessionLengthInSeconds(0);
     } else {
-      setSessionLengthInSeconds(
-        newSessionLengthInSeconds
-      );
+      setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
   const incrementSessionLengthByOneMinute = () =>
-    setSessionLengthInSeconds(
-      sessionLengthInSeconds + 60
-    );
+    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
 
   return (
     <div className="App">
       <Break
-        breakLengthInSeconds={
-          breakLengthInSeconds
-        }
-        incrementBreakLengthByOneMinute={
-          incrementBreakLengthByOneMinute
-        }
-        decrementBreakLengthByOneMinute={
-          decrementBreakLengthByOneMinute
-        }
+        breakLengthInSeconds={breakLengthInSeconds}
+        incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
+        decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
       />
-      <TimeLeft
-        sessionLengthInSeconds={
-          sessionLengthInSeconds
-        }
-      />
+      <TimeLeft sessionLengthInSeconds={sessionLengthInSeconds} />
       <Session
-        sessionLengthInSeconds={
-          sessionLengthInSeconds
-        }
-        incrementSessionLengthByOneMinute={
-          incrementSessionLengthByOneMinute
-        }
-        decrementSessionLengthByOneMinute={
-          decrementSessionLengthByOneMinute
-        }
+        sessionLengthInSeconds={sessionLengthInSeconds}
+        incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
+        decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
       />
     </div>
   );
@@ -512,10 +345,10 @@ To “plug in” the plugin, do the following in `TimeLeft.jsx`:
 
 ```jsx
 // TimeLeft.jsx
-import moment from "moment";
-import momentDurationFormatSetup from "moment-duration-format";
-import React from "react";
-import { useState } from "react";
+import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
+import React from 'react';
+import { useState } from 'react';
 
 momentDurationFormatSetup(moment);
 // ... the rest of your component here
@@ -525,28 +358,18 @@ With that done, we’re ready to format the component. As per the [`moment-durat
 
 ```jsx
 // TimeLeft.jsx
-import moment from "moment";
-import momentDurationFormatSetup from "moment-duration-format";
-import React from "react";
-import { useState } from "react";
+import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
+import React from 'react';
+import { useState } from 'react';
 
 momentDurationFormatSetup(moment);
 
-const TimeLeft = ({
-  sessionLengthInSeconds
-}) => {
-  const [timeLeft] = useState(
-    sessionLengthInSeconds
-  );
+const TimeLeft = ({ sessionLengthInSeconds }) => {
+  const [timeLeft] = useState(sessionLengthInSeconds);
 
-  const formattedTimeLeft = moment
-    .duration(timeLeft, "s")
-    .format("mm:ss");
-  return (
-    <p id="time-left">
-      {formattedTimeLeft}
-    </p>
-  );
+  const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss');
+  return <p id="time-left">{formattedTimeLeft}</p>;
 };
 
 export default TimeLeft;

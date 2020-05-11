@@ -1,12 +1,12 @@
 ---
 author: Aryan Jabbari
-title: "freeCodeCamp Pomodoro Clock 01: React Functional Components and Local State Using Hooks"
+title: 'freeCodeCamp Pomodoro Clock 01: React Functional Components and Local State Using Hooks'
 description: Write your first React functional components with local state using React hooks
 date: 2020-02-02
-hero: "./img/pomodoro-01.png"
+hero: './img/pomodoro-01.png'
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # freeCodeCamp Pomodoro Clock 01: React Functional Components and Local State
 
@@ -50,7 +50,7 @@ Now, inside your `/components` directory, create a new file: `Break.jsx`. Initia
 
 ```jsx
 // /src/components/Break.jsx
-import React from "react";
+import React from 'react';
 
 const Break = () => {
   return <div></div>;
@@ -63,9 +63,9 @@ Move the `<p id=“break-label”>Break</p>` line in `src/App.js` inside the `/s
 
 ```jsx
 // /src/App.js
-import React from "react";
-import "./App.css";
-import Break from "./components/Break"; // 👈 import Break here
+import React from 'react';
+import './App.css';
+import Break from './components/Break'; // 👈 import Break here
 
 function App() {
   return (
@@ -89,10 +89,7 @@ As per the spec, we’ll render the number of minutes to the user. However, sinc
 The syntax for `useState()` is as follows (we’ll use `favoriteColor` as an example):
 
 ```jsx
-const [
-  favoriteColor,
-  setfavoriteColor
-] = useState("red");
+const [favoriteColor, setfavoriteColor] = useState('red');
 ```
 
 Here, `favoriteColor` is the actual variable that is initialized to `'red'`. We can change the value of `favoriteColor` by calling `setFavoriteColor` with a new string: `setFavoriteColor(‘blue’)`.
@@ -105,21 +102,14 @@ If you did everything correctly, `/src/components/Break.jsx` should look like:
 
 ```jsx
 // /src/components/Break.jsx
-import React, {
-  useState
-} from "react";
+import React, { useState } from 'react';
 
 const Break = () => {
-  const [
-    breakLengthInSeconds,
-    setBreakLengthInSeconds
-  ] = useState(300);
+  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
   return (
     <div>
       <p id="break-label">Break</p>
-      <p id="break-length">
-        {breakLengthInSeconds}
-      </p>
+      <p id="break-length">{breakLengthInSeconds}</p>
     </div>
   );
 };
@@ -135,30 +125,20 @@ Let’s start by writing the functions that’ll be called by the plus and minus
 
 ```javascript
 const decrementBreakLengthByOneMinute = () => {
-  const newBreakLengthInSeconds =
-    breakLengthInSeconds - 60;
-  if (
-    newBreakLengthInSeconds < 0
-  ) {
+  const newBreakLengthInSeconds = breakLengthInSeconds - 60;
+  if (newBreakLengthInSeconds < 0) {
     setBreakLengthInSeconds(0);
   } else {
-    setBreakLengthInSeconds(
-      newBreakLengthInSeconds
-    );
+    setBreakLengthInSeconds(newBreakLengthInSeconds);
   }
 };
-const incrementBreakLengthByOneMinute = () =>
-  setBreakLengthInSeconds(
-    breakLengthInSeconds + 60
-  );
+const incrementBreakLengthByOneMinute = () => setBreakLengthInSeconds(breakLengthInSeconds + 60);
 ```
 
 To [handle events in React](https://reactjs.org/docs/handling-events.html), we need to remember to use [camel case](https://en.wikipedia.org/wiki/Camel_case) for event listener attributes in our HTML elements. For example,
 
 ```jsx
-<button onClick={activateLasers}>
-  Activate Lasers
-</button>
+<button onClick={activateLasers}>Activate Lasers</button>
 ```
 
 Notice the capital _”C”_ here.
@@ -167,53 +147,28 @@ In the JSX part of `Break.jsx`, add plus and minus buttons (with the `id`s as re
 
 ```jsx
 // src/components/Break.jsx
-import React, {
-  useState
-} from "react";
+import React, { useState } from 'react';
 
 const Break = () => {
-  const [
-    breakLengthInSeconds,
-    setBreakLengthInSeconds
-  ] = useState(300);
+  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
 
   const decrementBreakLengthByOneMinute = () => {
-    const newBreakLengthInSeconds =
-      breakLengthInSeconds - 60;
-    if (
-      newBreakLengthInSeconds < 0
-    ) {
+    const newBreakLengthInSeconds = breakLengthInSeconds - 60;
+    if (newBreakLengthInSeconds < 0) {
       setBreakLengthInSeconds(0);
     } else {
-      setBreakLengthInSeconds(
-        newBreakLengthInSeconds
-      );
+      setBreakLengthInSeconds(newBreakLengthInSeconds);
     }
   };
-  const incrementBreakLengthByOneMinute = () =>
-    setBreakLengthInSeconds(
-      breakLengthInSeconds + 60
-    );
+  const incrementBreakLengthByOneMinute = () => setBreakLengthInSeconds(breakLengthInSeconds + 60);
   return (
     <div>
       <p id="break-label">Break</p>
-      <p id="break-length">
-        {breakLengthInSeconds}
-      </p>
-      <button
-        id="break-increment"
-        onClick={
-          incrementBreakLengthByOneMinute
-        }
-      >
+      <p id="break-length">{breakLengthInSeconds}</p>
+      <button id="break-increment" onClick={incrementBreakLengthByOneMinute}>
         +
       </button>
-      <button
-        id="break-decrement"
-        onClick={
-          decrementBreakLengthByOneMinute
-        }
-      >
+      <button id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
         -
       </button>
     </div>
@@ -242,62 +197,32 @@ We’ll use [Moment durations](http://momentjs.com/docs/#/durations/) to convert
 ```jsx
 // /src/components/Break.jsx
 
-import moment from "moment";
-import React, {
-  useState
-} from "react";
+import moment from 'moment';
+import React, { useState } from 'react';
 
 const Break = () => {
-  const [
-    breakLengthInSeconds,
-    setBreakLengthInSeconds
-  ] = useState(300);
+  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300);
 
   const decrementBreakLengthByOneMinute = () => {
-    const newBreakLengthInSeconds =
-      breakLengthInSeconds - 60;
-    if (
-      newBreakLengthInSeconds < 0
-    ) {
+    const newBreakLengthInSeconds = breakLengthInSeconds - 60;
+    if (newBreakLengthInSeconds < 0) {
       setBreakLengthInSeconds(0);
     } else {
-      setBreakLengthInSeconds(
-        newBreakLengthInSeconds
-      );
+      setBreakLengthInSeconds(newBreakLengthInSeconds);
     }
   };
-  const incrementBreakLengthByOneMinute = () =>
-    setBreakLengthInSeconds(
-      breakLengthInSeconds + 60
-    );
+  const incrementBreakLengthByOneMinute = () => setBreakLengthInSeconds(breakLengthInSeconds + 60);
 
-  const breakLengthInMinutes = moment
-    .duration(
-      breakLengthInSeconds,
-      "s"
-    )
-    .minutes(); // the seconds to minutes conversion is HERE!
+  const breakLengthInMinutes = moment.duration(breakLengthInSeconds, 's').minutes(); // the seconds to minutes conversion is HERE!
   return (
     <div>
       <p id="break-label">Break</p>
       {/* Note the variable change below */}
-      <p id="break-length">
-        {breakLengthInMinutes}
-      </p>
-      <button
-        id="break-increment"
-        onClick={
-          incrementBreakLengthByOneMinute
-        }
-      >
+      <p id="break-length">{breakLengthInMinutes}</p>
+      <button id="break-increment" onClick={incrementBreakLengthByOneMinute}>
         +
       </button>
-      <button
-        id="break-decrement"
-        onClick={
-          decrementBreakLengthByOneMinute
-        }
-      >
+      <button id="break-decrement" onClick={decrementBreakLengthByOneMinute}>
         -
       </button>
     </div>
@@ -316,10 +241,10 @@ The session component will be in a new file (`/src/components/Session`) is almos
 `App.js`
 
 ```jsx
-import React from "react";
-import "./App.css";
-import Break from "./components/Break";
-import Session from "./components/Session";
+import React from 'react';
+import './App.css';
+import Break from './components/Break';
+import Session from './components/Session';
 
 function App() {
   return (
@@ -336,63 +261,32 @@ export default App;
 `Session.jsx`
 
 ```jsx
-import moment from "moment";
-import React, {
-  useState
-} from "react";
+import moment from 'moment';
+import React, { useState } from 'react';
 
 const Session = () => {
-  const [
-    sessionLengthInSeconds,
-    setSessionLengthInSeconds
-  ] = useState(60 * 25);
+  const [sessionLengthInSeconds, setSessionLengthInSeconds] = useState(60 * 25);
 
   const decrementSessionLengthByOneMinute = () => {
-    const newSessionLengthInSeconds =
-      sessionLengthInSeconds - 60;
-    if (
-      newSessionLengthInSeconds < 0
-    ) {
+    const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
+    if (newSessionLengthInSeconds < 0) {
       setSessionLengthInSeconds(0);
     } else {
-      setSessionLengthInSeconds(
-        newSessionLengthInSeconds
-      );
+      setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
   const incrementSessionLengthByOneMinute = () =>
-    setSessionLengthInSeconds(
-      sessionLengthInSeconds + 60
-    );
+    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
 
-  const sessionLengthInMinutes = moment
-    .duration(
-      sessionLengthInSeconds,
-      "s"
-    )
-    .minutes();
+  const sessionLengthInMinutes = moment.duration(sessionLengthInSeconds, 's').minutes();
   return (
     <div>
-      <p id="session-label">
-        Session
-      </p>
-      <p id="session-length">
-        {sessionLengthInMinutes}
-      </p>
-      <button
-        id="session-increment"
-        onClick={
-          incrementSessionLengthByOneMinute
-        }
-      >
+      <p id="session-label">Session</p>
+      <p id="session-length">{sessionLengthInMinutes}</p>
+      <button id="session-increment" onClick={incrementSessionLengthByOneMinute}>
         +
       </button>
-      <button
-        id="session-decrement"
-        onClick={
-          decrementSessionLengthByOneMinute
-        }
-      >
+      <button id="session-decrement" onClick={decrementSessionLengthByOneMinute}>
         -
       </button>
     </div>

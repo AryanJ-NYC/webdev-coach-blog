@@ -6,7 +6,7 @@ date: 2019-10-05
 hero: ./img/nestjs-prisma.jpg
 ---
 
-import StyledYouTube from "../../../src/components/StyledYouTube";
+import StyledYouTube from '../../../src/components/StyledYouTube';
 
 # Use Prisma with a NestJS GraphQL Server
 
@@ -169,16 +169,15 @@ If this was successful, `src/prisma/prisma.service.ts` (and a corresponding test
 
 ```ts
 // src/prisma/prisma.service.ts
-import { Injectable } from "@nestjs/common";
-import { Prisma } from "./prisma.binding";
+import { Injectable } from '@nestjs/common';
+import { Prisma } from './prisma.binding';
 
 @Injectable()
 export class PrismaService extends Prisma {
   constructor() {
     super({
-      endpoint:
-        "https://us1.prisma.sh/aryan-j/use-your-own-endpoint/dev",
-      debug: false
+      endpoint: 'https://us1.prisma.sh/aryan-j/use-your-own-endpoint/dev',
+      debug: false,
     });
   }
 }
@@ -192,12 +191,12 @@ In our `PrismaModule` (`/src/prisma.module.ts`), let's export the `PrismaService
 
 ```ts
 // src/prisma/prisma.module.ts
-import { Module } from "@nestjs/common";
-import { PrismaService } from "./prisma.service";
+import { Module } from '@nestjs/common';
+import { PrismaService } from './prisma.service';
 
 @Module({
   providers: [PrismaService],
-  exports: [PrismaService]
+  exports: [PrismaService],
 })
 export class PrismaModule {}
 ```
@@ -206,14 +205,14 @@ and import the `PrismaModule` in our `MessagesModule`:
 
 ```ts
 // src/messages/messages.module.ts
-import { Module } from "@nestjs/common";
-import { MessagesResolver } from "./messages.resolver";
-import { PrismaModule } from "../prisma/prisma.module";
+import { Module } from '@nestjs/common';
+import { MessagesResolver } from './messages.resolver';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
   providers: [MessagesResolver],
-  exports: [MessagesResolver]
+  exports: [MessagesResolver],
 })
 export class MessagesModule {}
 ```
@@ -225,33 +224,22 @@ Lastly, in our `MessagesResolver`, we need to do a number of things:
 3. Forward the `messages` query and the `createMessage` mutation to our Prisma server.
 
 ```ts
-import {
-  Mutation,
-  Resolver,
-  Query,
-  Args
-} from "@nestjs/graphql";
-import { PrismaService } from "../prisma/prisma.service";
+import { Mutation, Resolver, Query, Args } from '@nestjs/graphql';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Resolver()
 export class MessagesResolver {
   // the injected dependency is injected as an argument to the constructor
-  constructor(
-    private readonly prisma: PrismaService
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   @Query()
   messages(@Args() args) {
-    return this.prisma.query.messages(
-      args
-    );
+    return this.prisma.query.messages(args);
   }
 
   @Mutation()
   createMessage(@Args() args) {
-    return this.prisma.mutation.createMessage(
-      args
-    );
+    return this.prisma.mutation.createMessage(args);
   }
 }
 ```
@@ -271,9 +259,7 @@ query allMessages {
 }
 
 mutation createMessage {
-  createMessage(
-    data: { description: "Hello" }
-  ) {
+  createMessage(data: { description: "Hello" }) {
     id
     description
   }

@@ -27,7 +27,7 @@ If you haven't already, you'll need to create a GitHub personal access token for
    - `write:packages`: allows you to upload packages to the GitHub Package Registry
    - `delete:packages`: allows you to delete packages from the GitHub Package Registry
 
-  ![Necessary permissions](./img/permissions.png)
+![Necessary permissions](./img/permissions.png)
 
 5. Scroll down to the bottom and click the green _Generate token_ button.
 6. Click the copy to clipboard icon to copy the token to your clipboard. Make sure to store it in a safe place (perhaps LastPass or 1Password?) as this is the only time you'll be seeing this token.
@@ -56,42 +56,43 @@ There are two ways to publish to the GitHub Package Registry:
 1. Add a `.npmrc` file to the root of your project: `touch .npmrc`.
 2. Inside your `.npmrc` file, write the following:
 
-  ```bash
-  # .npmrc
-  registry=https://npm.pkg.github.com/your-github-name
-  ```
+```bash
+# .npmrc
+registry=https://npm.pkg.github.com/your-github-name
+```
 
 Please note that `your-github-name` must be all lowercase! Additionally, this file must be committed to your GitHub repository.
 
 3. Inside your `package.json` file, please modify or add the following:
 
-  ```json
-  // package.json
-  {
-    // ...things you have already
-    "name": "@your-github-name/package-name",
-    "repository": "git://github.com/your-github-name/package-name.git"
-    // ... other things you have already
-  }
-  ```
+```json
+// package.json
+{
+  // ...things you have already
+  "name": "@your-github-name/package-name",
+  "repository": "git://github.com/your-github-name/package-name.git"
+  // ... other things you have already
+}
+```
 
 4. Publish: `npm publish`.
 
 ### Using `publishConfig` in `package.json`
 
 1.  Inside your `package.json` file, please modify or add the following:
-  ```json
-  // package.json
-  {
-    // ...things you have already
-    "publishConfig": {
-      "registry": "https://npm.pkg.github.com"
-    },
-    "name": "@your-github-name/package-name",
-    "repository": "git://github.com/your-github-name/package-name.git"
-    // ... other things you have already
-  }
-  ```
+
+```json
+// package.json
+{
+  // ...things you have already
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "name": "@your-github-name/package-name",
+  "repository": "git://github.com/your-github-name/package-name.git"
+  // ... other things you have already
+}
+```
 
 2.  Publish: `npm publish`.
 
@@ -100,10 +101,10 @@ Please note that `your-github-name` must be all lowercase! Additionally, this fi
 1.  [Authenticate](#authenticating-to-github-packages)
 2.  Add `.npmrc` to have:
 
-  ```bash
-  # .npmrc
-  @the-github-name-of-the-org-or-person-who-created-the-package-in-lowercase:registry=https://npm.pkg.github.com
-  ```
+```bash
+# .npmrc
+@the-github-name-of-the-org-or-person-who-created-the-package-in-lowercase:registry=https://npm.pkg.github.com
+```
 
 3.  Now you can successfully run `yarn` or `npm i`.
 
