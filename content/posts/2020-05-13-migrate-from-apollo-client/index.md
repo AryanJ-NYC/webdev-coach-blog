@@ -1,7 +1,7 @@
 ---
 author: Aryan Jabbari
 title: 'I Migrated Away from Apollo Client to Vercel SWR and Prisma graphql-request...and You Can Too!'
-description: Migrate Away from Apollo Client to useSWR.
+description: 'Migrate Away from Apollo Client to useSWR.'
 date: 2020-05-13
 hero: './hero.png'
 ---
